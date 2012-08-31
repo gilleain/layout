@@ -54,7 +54,7 @@ public class GraphObject implements Iterable<Vertex> {
 	public GraphObject(Graph graph) {
 	    
         BitSet usedVertices = new BitSet(graph.getVertexCount());
-        for (Graph.Edge e : graph.edges) {
+        for (model.Edge e : graph.edges) {
             usedVertices.set(e.a);
             usedVertices.set(e.b);
         }
@@ -67,7 +67,7 @@ public class GraphObject implements Iterable<Vertex> {
         }
         
         this.edges = new ArrayList<Edge>();
-        for (Graph.Edge e : graph.edges) {
+        for (model.Edge e : graph.edges) {
             add(getVertexWithIndex(e.a), getVertexWithIndex(e.b));
         }
 	}
