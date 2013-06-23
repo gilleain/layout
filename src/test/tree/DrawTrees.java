@@ -1,5 +1,9 @@
 package test.tree;
 
+import graph.model.Graph;
+import graph.model.GraphFileReader;
+import graph.tree.TreeCenterFinder;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -16,13 +20,10 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 
 import layout.CircleLayout;
-import model.Graph;
-import model.GraphFileReader;
 
 import org.junit.Test;
 
 import planar.Vertex;
-import tree.TreeCenterFinder;
 import draw.ParameterSet;
 import draw.Representation;
 

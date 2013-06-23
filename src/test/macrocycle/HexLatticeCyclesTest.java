@@ -1,5 +1,8 @@
 package test.macrocycle;
 
+import graph.model.Graph;
+import graph.model.GraphSignature;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
@@ -19,22 +22,21 @@ import javax.imageio.ImageIO;
 
 import macrocycle.HexLattice;
 import macrocycle.TriangleLattice;
-import model.Graph;
-import model.GraphSignature;
 
 import org.junit.Test;
 
-import combinatorics.SubsetLister;
-
 import planar.Block;
+import planar.BlockEmbedding;
 import planar.CycleFinder;
 import planar.DualFinder;
 import planar.Edge;
-import planar.BlockEmbedding;
 import planar.PlanarBlockEmbedder;
 import planar.SpanningTree;
 import planar.Vertex;
 import planar.visitor.ConnectedComponentFinder;
+
+import combinatorics.SubsetLister;
+
 import draw.ParameterSet;
 import draw.Representation;
 

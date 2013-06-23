@@ -1,5 +1,7 @@
 package test.planar;
 
+import graph.model.Graph;
+
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -7,7 +9,6 @@ import java.lang.reflect.Method;
 
 import layout.ConcentricCircularLayout;
 import layout.PlestenjakRefiner;
-import model.Graph;
 
 import org.junit.Test;
 

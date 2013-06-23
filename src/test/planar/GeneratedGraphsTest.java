@@ -1,5 +1,8 @@
 package test.planar;
 
+import graph.model.Graph;
+import graph.model.GraphFileReader;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -9,15 +12,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import layout.ConcentricCircularLayout;
-import model.Graph;
-import model.GraphFileReader;
 
 import org.junit.Test;
 
-import draw.Drawing;
-
 import planar.BlockEmbedding;
 import planar.PlanarBlockEmbedder;
+import draw.Drawing;
 
 public class GeneratedGraphsTest {
 	

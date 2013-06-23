@@ -1,12 +1,13 @@
 package layout;
 
+import graph.model.Graph;
+
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Map;
 
-import model.Graph;
 import planar.Edge;
 import planar.Vertex;
 import draw.ParameterSet;

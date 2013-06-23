@@ -1,9 +1,9 @@
 package planar;
 
+import graph.model.Graph;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Graph;
 
 /**
  * A specialized embedder for graphs whose dual is a tree, which implies it has an 

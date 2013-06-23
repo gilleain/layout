@@ -1,8 +1,8 @@
 package test.planar;
 
-import java.util.Random;
+import graph.model.Graph;
 
-import model.Graph;
+import java.util.Random;
 
 import org.junit.Test;
 

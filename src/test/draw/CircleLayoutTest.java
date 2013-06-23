@@ -1,5 +1,8 @@
 package test.draw;
 
+import graph.model.Graph;
+import graph.model.GraphFileReader;
+
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
@@ -11,8 +14,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import layout.CircleLayout;
-import model.Graph;
-import model.GraphFileReader;
 
 import org.junit.Test;
 

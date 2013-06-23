@@ -11,8 +11,8 @@ import java.util.Map;
 
 import javax.vecmath.Vector2d;
 
-import planar.Edge;
 import planar.BlockEmbedding;
+import planar.Edge;
 import planar.Face;
 import planar.Vertex;
 import draw.Representation;

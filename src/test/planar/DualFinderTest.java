@@ -1,12 +1,12 @@
 package test.planar;
 
-import model.Graph;
+import graph.model.Graph;
 
 import org.junit.Test;
 
+import planar.BlockEmbedding;
 import planar.DualFinder;
 import planar.DualTreeEmbedder;
-import planar.BlockEmbedding;
 import planar.Face;
 
 public class DualFinderTest {

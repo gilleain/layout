@@ -1,14 +1,15 @@
 package layout;
 
+import graph.model.Graph;
+import graph.tree.TreeCenterFinder;
+
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
-import model.Graph;
 import planar.Edge;
 import planar.Vertex;
-import tree.TreeCenterFinder;
 import draw.ParameterSet;
 import draw.Representation;
 

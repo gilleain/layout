@@ -11,8 +11,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import macrocycle.FlowerPartitionGenerator;
 import macrocycle.FlowerLayout;
+import macrocycle.FlowerPartitionGenerator;
 
 import org.junit.Test;
 

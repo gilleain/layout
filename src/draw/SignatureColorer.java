@@ -1,13 +1,14 @@
 package draw;
 
+import graph.model.Graph;
+import graph.model.GraphSignature;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.Graph;
-import model.GraphSignature;
 import planar.BlockEmbedding;
 import planar.Vertex;
 import signature.SymmetryClass;

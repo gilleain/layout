@@ -1,6 +1,6 @@
 package test.planar;
 
-import model.Graph;
+import graph.model.Graph;
 
 import org.junit.Test;
 

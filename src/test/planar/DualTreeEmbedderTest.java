@@ -1,11 +1,11 @@
 package test.planar;
 
-import model.Graph;
+import graph.model.Graph;
 
 import org.junit.Test;
 
-import planar.DualTreeEmbedder;
 import planar.BlockEmbedding;
+import planar.DualTreeEmbedder;
 import planar.Face;
 
 public class DualTreeEmbedderTest {

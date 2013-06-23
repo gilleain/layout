@@ -1,11 +1,11 @@
 package test.planar;
 
+import graph.model.Graph;
+import graph.model.GraphFileReader;
+
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
-
-import model.Graph;
-import model.GraphFileReader;
 
 import org.junit.Test;
 

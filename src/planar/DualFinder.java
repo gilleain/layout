@@ -1,8 +1,8 @@
 package planar;
 
-import java.util.List;
+import graph.model.Graph;
 
-import model.Graph;
+import java.util.List;
 
 /**
  * Simplistic method to find the (inner) dual of a planar graph.

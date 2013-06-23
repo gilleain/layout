@@ -1,11 +1,11 @@
 package macrocycle;
 
+import graph.model.Graph;
+
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Graph;
 
 public class TriangleLattice implements Lattice {
     

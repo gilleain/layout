@@ -1,11 +1,11 @@
 package planar;
 
+import graph.model.Graph;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import model.Graph;
 
 /**
  * The embedding for a single block (biconnected subgraph) of a graph, as a set of faces and a

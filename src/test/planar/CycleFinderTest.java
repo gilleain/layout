@@ -1,19 +1,19 @@
 package test.planar;
 
+import graph.model.Graph;
+
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
 
-import model.Graph;
-
 import org.junit.Assert;
 import org.junit.Test;
-
-import combinatorics.SubsetLister;
 
 import planar.Block;
 import planar.CycleFinder;
 import planar.SpanningTree;
+
+import combinatorics.SubsetLister;
 
 public class CycleFinderTest {
     

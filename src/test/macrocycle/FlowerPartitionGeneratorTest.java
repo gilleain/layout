@@ -1,7 +1,6 @@
 package test.macrocycle;
 
 import group.Partition;
-
 import macrocycle.FlowerPartitionGenerator;
 
 import org.junit.Test;

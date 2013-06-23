@@ -1,8 +1,9 @@
 package layout;
 
+import graph.model.Graph;
+
 import java.awt.geom.Rectangle2D;
 
-import model.Graph;
 import draw.Representation;
 
 public interface SimpleLayout {

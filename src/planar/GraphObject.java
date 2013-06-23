@@ -1,11 +1,12 @@
 package planar;
 
+import graph.model.Graph;
+
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
-import model.Graph;
 import planar.visitor.DFSVisitor;
 
 public class GraphObject implements Iterable<Vertex> {
@@ -54,7 +55,7 @@ public class GraphObject implements Iterable<Vertex> {
 	public GraphObject(Graph graph) {
 	    
         BitSet usedVertices = new BitSet(graph.getVertexCount());
-        for (model.Edge e : graph.edges) {
+        for (graph.model.Edge e : graph.edges) {
             usedVertices.set(e.a);
             usedVertices.set(e.b);
         }
@@ -67,7 +68,7 @@ public class GraphObject implements Iterable<Vertex> {
         }
         
         this.edges = new ArrayList<Edge>();
-        for (model.Edge e : graph.edges) {
+        for (graph.model.Edge e : graph.edges) {
             add(getVertexWithIndex(e.a), getVertexWithIndex(e.b));
         }
 	}
