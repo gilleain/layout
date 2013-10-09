@@ -1,9 +1,7 @@
-package planar;
+package chiral;
 
 import graph.model.Graph;
-
-import java.util.List;
-import java.util.Map;
+import planar.Vertex;
 
 /**
  * Converts combinatorial maps to graphs.
@@ -13,11 +11,11 @@ import java.util.Map;
  */
 public class CMapConverter {
     
-    public static Graph toGraph(Map<Vertex, List<Vertex>> combinatorialMap) {
+    public static Graph toGraph(CombinatorialMap combinatorialMap) {
         Graph g = new Graph();
-        for (Vertex v : combinatorialMap.keySet()) {
+        for (Vertex v : combinatorialMap) {
             int vi = v.getIndex();
-            for (Vertex w : combinatorialMap.get(v)) {
+            for (Vertex w : combinatorialMap.getNeighbours(v)) {
                 int wi = w.getIndex();
                 if (!g.hasEdge(vi, wi)) {
                     g.makeEdge(vi, wi);

@@ -1,4 +1,4 @@
-package layout;
+package chiral;
 
 import graph.model.Graph;
 import graph.tree.TreeCenterFinder;
@@ -8,18 +8,19 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.List;
 
+import layout.AbstractLayout;
 import planar.Edge;
 import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 
 /**
- * Layout a tree from its center vertex outwards.
+ * Layout a tree from its center vertex outwards (respecting chirality).
  * 
  * @author maclean
  *
  */
-public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
+public class RadialTreeLayout extends AbstractLayout implements ChiralLayout {
     
     private ParameterSet params;
     
@@ -30,16 +31,16 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
         this.params = params;
     }
 
-    public Representation layout(Graph tree, Rectangle2D canvas) {
+    public Representation layout(Graph tree, CombinatorialMap cm, Rectangle2D canvas) {
         Representation representation = new Representation();
         Point2D centerPoint = new Point2D.Double(canvas.getCenterX(), canvas.getCenterY());
         List<Integer> centerIndices = TreeCenterFinder.findCenter(tree);
         if (centerIndices.size() == 1) {
-            layout(tree, centerIndices.get(0), -1, centerPoint, representation);
+            layout(tree, cm, centerIndices.get(0), -1, centerPoint, representation);
         } else {
             int indexA = centerIndices.get(0);
             int indexB = centerIndices.get(1);
-            layoutFromCenterPair(tree, indexA, indexB, centerPoint, representation);
+            layoutFromCenterPair(tree, cm, indexA, indexB, centerPoint, representation);
         }
         
         return representation;
@@ -55,7 +56,8 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
      * @param pB a placed vertex attached to pV
      * @param representation the representation to fill
      */
-    public void layout(Graph tree, Vertex pV, Vertex pA, Vertex pB, Representation representation) {
+    public void layout(
+            Graph tree, CombinatorialMap cm,  Vertex pV, Vertex pA, Vertex pB, Representation representation) {
         int index = pV.getIndex();
         
         Point2D ppV = representation.getPoint(pV);
@@ -91,19 +93,20 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
             Point2D nextPoint = makeNextPoint(ppV, currentAngle);
             representation.addLine(new Edge(pV, new Vertex(neighbour)), 
                                    new Line2D.Double(ppV, nextPoint));
-            layout(tree, neighbour, index, nextPoint, representation);
+            layout(tree, cm, neighbour, index, nextPoint, representation);
         }
     }
-
-    private void layout(Graph tree, int index, int parentIndex, Point2D point, Representation rep) {
+    
+    private void layout(Graph tree,  CombinatorialMap cm, int index, int parentIndex, Point2D point, Representation rep) {
         Vertex vertex = new Vertex(index);
         rep.addPoint(vertex, point);
-        placeConnected(tree, vertex, index, parentIndex, point, rep);
+        placeConnected(tree, cm, vertex, index, parentIndex, point, rep);
     }
     
     private void placeConnected(
-            Graph tree, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
+            Graph tree,  CombinatorialMap cm, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
         List<Integer> neighbours = tree.getConnected(index);
+        // TODO : this test does nothing!
         int unplacedNeighbours = (parentIndex == -1)? neighbours.size() : neighbours.size();
         int n = Math.max(MIN_NEIGHBOURS, unplacedNeighbours);
         double addAngle = Math.toRadians(360 / n);
@@ -128,7 +131,7 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
                 Point2D nextPoint = makeNextPoint(point, currentAngle);
                 rep.addLine(new Edge(vertex, new Vertex(neighbour)), 
                         new Line2D.Double(point, nextPoint));
-                layout(tree, neighbour, index, nextPoint, rep);
+                layout(tree, cm, neighbour, index, nextPoint, rep);
             }
         }
     }
@@ -139,9 +142,10 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
         double y = point.getY() + (edgeLen * Math.sin(currentAngle));
         return new Point2D.Double(x, y);
     }
-    
-    private void layoutFromCenterPair(
-            Graph tree, int centerIndexA, int centerIndexB, Point2D centerPoint, Representation rep) {
+
+    private void layoutFromCenterPair(Graph tree,  CombinatorialMap cm, 
+                                      int centerIndexA, int centerIndexB, 
+                                      Point2D centerPoint, Representation rep) {
         double edgeLen = params.get("edgeLength");
         
         double centerX = centerPoint.getX();
@@ -154,8 +158,8 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
         rep.addLine(new Edge(new Vertex(centerIndexA), new Vertex(centerIndexB)), 
                     new Line2D.Double(centerPointA, centerPointB));
         
-        layout(tree, centerIndexA, centerIndexB, centerPointA, rep);
-        layout(tree, centerIndexB, centerIndexA, centerPointB, rep);
+        layout(tree, cm, centerIndexA, centerIndexB, centerPointA, rep);
+        layout(tree, cm, centerIndexB, centerIndexA, centerPointB, rep);
     }
     
 }
