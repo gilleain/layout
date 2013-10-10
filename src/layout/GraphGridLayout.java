@@ -1,7 +1,6 @@
 package layout;
 
 import graph.model.Graph;
-import graph.model.GraphFileReader;
 
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -40,7 +39,7 @@ public class GraphGridLayout {
         return totalHeight;
     }
     
-    public Map<Graph, Representation> layout(GraphFileReader graphs) {
+    public Map<Graph, Representation> layout(Iterable<Graph> graphs) {
         Map<Graph, Representation> repMap = new HashMap<Graph, Representation>();
         List<Representation> reps = new ArrayList<Representation>();
         
@@ -63,14 +62,15 @@ public class GraphGridLayout {
         }
         
         int padding = (int)params.get("padding");
-        int n = reps.size();
-        int m = (int) Math.floor(Math.sqrt(n));
-        int cx = (cellWidth / 2) + padding;
-        int cy = (cellHeight / 2) + padding;
+        int s = reps.size();
+        int m = (int) Math.floor(Math.sqrt(s));
+        int n = m + 1;
+        int cx = (cellWidth / 2) + (padding / 2);
+        int cy = (cellHeight / 2) + (padding / 2);
         int i = 0;
         for (int r = 0; r < m; r++) {
-            for (int c = 0; c < m + 1; c++) {
-                if (i >= n) break;
+            for (int c = 0; c < n; c++) {
+                if (i >= s) break;
                 reps.get(i).centerOn(cx, cy);
                 System.out.println("i " + i + " cx " + cx + " cy " + cy);
                 cx += cellWidth + padding;
@@ -80,8 +80,9 @@ public class GraphGridLayout {
             cx = (cellWidth / 2) + padding;
         }
         
-        totalWidth = ((m + 1) * cellWidth) + ((m + 1) * (padding + 1));
+        totalWidth = (n * cellWidth) + (n * (padding + 1));
         totalHeight = (m * cellHeight) + (m * (padding + 1));
+        totalHeight = Math.max(totalHeight, cellHeight + padding);    // XXX FIXME
         
         return repMap;
     }
