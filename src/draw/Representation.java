@@ -114,6 +114,7 @@ public class Representation {
 			Point2D point = points.get(vertex);
 			double x = point.getX() - pointRadius;
 			double y = point.getY() - pointRadius;
+			Color savedColor = g.getColor();
 			if (vertexColorMap != null) {
 				Color color = vertexColorMap.get(vertex);
 				if (color != null) {
@@ -126,6 +127,7 @@ public class Representation {
     			g.setColor(Color.BLACK);
     			g.drawString(String.valueOf(vertex.getIndex()), (int)x, (int)y);
 			}
+			g.setColor(savedColor);
 		}
 		
 	}

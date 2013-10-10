@@ -8,7 +8,7 @@ import java.io.File;
 public class BaseDrawTest {
     
     public Image makeBlankImage(int w, int h) {
-        Image img = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
+        Image img = new BufferedImage(w, h, BufferedImage.TYPE_4BYTE_ABGR);
         img.getGraphics().setColor(Color.WHITE);
         img.getGraphics().fillRect(0, 0, w, h);
         return img;
