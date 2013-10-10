@@ -80,8 +80,8 @@ public class GraphGridLayout {
             cx = (cellWidth / 2) + padding;
         }
         
-        totalWidth = (m + 1) * (cellWidth + padding);
-        totalHeight = m * (cellHeight + padding);
+        totalWidth = ((m + 1) * cellWidth) + ((m + 1) * (padding + 1));
+        totalHeight = (m * cellHeight) + (m * (padding + 1));
         
         return repMap;
     }
