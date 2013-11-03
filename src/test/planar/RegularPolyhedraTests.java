@@ -1,6 +1,7 @@
 package test.planar;
 
 import graph.model.Graph;
+import graph.model.GraphFactory;
 
 import java.io.IOException;
 
@@ -18,6 +19,33 @@ public class RegularPolyhedraTests extends AbstractDrawingTest {
 	public String getOutputDir() {
 		return OUTPUT_DIR;
 	}
+	
+	public void embed(Graph g, String outfileName) throws IOException {
+	    BlockEmbedding em = PlanarBlockEmbedder.embed(g);
+        if (em != null) {
+            draw(em, WIDTH, HEIGHT, outfileName + ".png");
+        }
+	}
+	
+	@Test
+    public void triPrism() throws IOException {
+        embed(GraphFactory.nPrism(3), "triPrism");
+    }
+	
+	@Test
+	public void cube() throws IOException {
+	    embed(GraphFactory.nPrism(4), "cube");
+	}
+	
+	@Test
+    public void pentaPrism() throws IOException {
+	    embed(GraphFactory.nPrism(5), "pentaprism");
+    }
+	
+	@Test
+    public void hexaPrism() throws IOException {
+        embed(GraphFactory.nPrism(6), "hexaprism");
+    }
 	
 	@Test
 	public void a3_6_6_v12() throws IOException {
