@@ -4,12 +4,15 @@ import graph.model.Graph;
 
 import java.util.ArrayList;
 import java.util.BitSet;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import layout.Layoutable;
 import planar.visitor.DFSVisitor;
 
-public class GraphObject implements Iterable<Vertex> {
+public class GraphObject implements Iterable<Vertex>, Layoutable {
 	
 	protected List<Vertex> vertices;
 	
@@ -258,5 +261,20 @@ public class GraphObject implements Iterable<Vertex> {
 	public List<Edge> getEdges() {
         return edges;
     }
+
+	@Override
+	public List<Integer> getConnected(int vertex) {
+	    return getConnectedIndices(getVertex(vertex));
+	}
+	
+	@Override
+	public Map<Integer, List<Integer>> getConnectionTable() {
+	    Map<Integer, List<Integer>> table = new HashMap<Integer, List<Integer>>();
+	    for (Vertex v : vertices) {
+	        List<Integer> connected = getConnectedIndices(v);
+	        table.put(v.getIndex(), connected);
+	    }
+	    return table;
+	}
 
 }

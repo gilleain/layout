@@ -18,11 +18,7 @@ public class Path extends GraphObject {
 	
 	public Path(Edge edge) {
 	    super();
-	    Vertex a = edge.getA();
-	    Vertex b = edge.getB();
-	    add(a);
-	    add(b);
-	    add(a, b);
+	    addEdge(edge);
     }
 
     public boolean contains(List<Vertex> endPoints) {
@@ -44,6 +40,14 @@ public class Path extends GraphObject {
             rev.add(edge.getB(), edge.getA());
         }
         return rev;
+    }
+
+    public void addEdge(Edge edge) {
+        Vertex a = edge.getA();
+        Vertex b = edge.getB();
+        add(a);
+        add(b);
+        add(a, b);
     }
 
 }

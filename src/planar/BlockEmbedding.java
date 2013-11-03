@@ -79,6 +79,28 @@ public class BlockEmbedding {
 	}
 	
 	/**
+     * Calculate the inner dual of the embedded block, which has a vertex for
+     * every face (except the external one) and an edge for every pair of faces 
+     * that share an edge.
+     * 
+     * @return the inner dual of this block embedding
+     */
+    public Block calculateInnerDual() {
+        List<Face> faces = getFaces();
+        Block dual = new Block(faces.size());
+        for (int i = 0; i < faces.size(); i++) {
+            Face faceI = faces.get(i);
+            for (int j = i + 1; j < faces.size(); j++) {
+                Face faceJ = faces.get(j);
+                if (faceI.sharesEdge(faceJ)) {
+                    dual.add(i, j);
+                }
+            }
+        }
+        return dual;
+    }
+	
+	/**
 	 * Embed a circuit, returning it as a face. The edges of the face are in cyclic order. 
 	 * The vertices are added to the combinatorial map.
 	 * 
