@@ -163,12 +163,12 @@ public class PlestenjakRefiner implements Refiner {
 		return refined;
 	}
 	
-	private void print(List<Point2D> points) {
-		for (Point2D p : points) {
-			System.out.print("[" + Math.round(p.getX()) + ", " + Math.round(p.getY()) + "]");
-		}
-		System.out.println();
-	}
+//	private void print(List<Point2D> points) {
+//		for (Point2D p : points) {
+//			System.out.print("[" + Math.round(p.getX()) + ", " + Math.round(p.getY()) + "]");
+//		}
+//		System.out.println();
+//	}
 	
 	private Vector2d vectorFunc(Point2D v, Point2D u) {
 		double vx = v.getX();

@@ -144,18 +144,18 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
         return new Point2D.Double(avgX / face.vsize(), avgY / face.vsize());
     }
     
-    private String f(Point2D p) {
-        if (p == null) {
-            return "NULL";
-        } else {
-            return String.format("(%.1f,  %.1f)", p.getX(), p.getY());
-        }
-    }
-    
-    private String d(double rad) {
-        return String.valueOf(Math.round(Math.toDegrees(rad)));
-    }
-    
+//    private String f(Point2D p) {
+//        if (p == null) {
+//            return "NULL";
+//        } else {
+//            return String.format("(%.1f,  %.1f)", p.getX(), p.getY());
+//        }
+//    }
+//    
+//    private String d(double rad) {
+//        return String.valueOf(Math.round(Math.toDegrees(rad)));
+//    }
+//    
     private List<Edge> layoutArch(Vertex archStart, Edge spokeA, 
                                    Vertex archEnd, Edge spokeB, 
                                    Face face, List<Edge> outerPath,

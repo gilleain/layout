@@ -13,7 +13,7 @@ public class ConnectedComponentFinder implements DFSVisitor {
 	
 	private List<Block> components;
 	
-	private int currentComponentIndex;
+//	private int currentComponentIndex;
 	
 	private boolean shouldSetup;
 	
@@ -25,7 +25,7 @@ public class ConnectedComponentFinder implements DFSVisitor {
 	private void setup() {
 	    visited = new ArrayList<Vertex>();
         components = new ArrayList<Block>();
-        currentComponentIndex = 0;
+//        currentComponentIndex = 0;
 	}
 
 	public void visit(GraphObject g, Vertex v) {
@@ -37,7 +37,7 @@ public class ConnectedComponentFinder implements DFSVisitor {
 			return;
 		} else {
 			components.add(currentComponent);
-			currentComponentIndex++;
+//			currentComponentIndex++;
 		}
 	}
 	
