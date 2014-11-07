@@ -1,5 +1,9 @@
 package layout;
 
+import graph.model.Edge;
+import graph.model.Path;
+import graph.model.Vertex;
+
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -8,10 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import planar.BlockEmbedding;
-import planar.Edge;
 import planar.Face;
-import planar.Path;
-import planar.Vertex;
 import draw.Representation;
 
 public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {

@@ -1,10 +1,11 @@
 package layout;
 
+import graph.model.Vertex;
+
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import planar.BlockEmbedding;
-import planar.Vertex;
 import draw.Representation;
 
 public interface Layout {

@@ -1,6 +1,9 @@
 package test.planar;
 
+import graph.model.Block;
+import graph.model.CycleFinder;
 import graph.model.Graph;
+import graph.model.SpanningTree;
 
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -8,10 +11,6 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import planar.Block;
-import planar.CycleFinder;
-import planar.SpanningTree;
 
 import combinatorics.SubsetLister;
 

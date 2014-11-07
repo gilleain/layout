@@ -1,12 +1,12 @@
 package test.planar;
 
+import graph.model.Block;
 import graph.model.Graph;
 
 import java.util.List;
 
 import org.junit.Test;
 
-import planar.Block;
 import planar.GraphEmbedder;
 import planar.GraphEmbedding;
 

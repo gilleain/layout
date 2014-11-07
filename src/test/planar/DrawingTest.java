@@ -1,12 +1,12 @@
 package test.planar;
 
+import graph.model.Block;
 import graph.model.Graph;
 
 import java.io.IOException;
 
 import org.junit.Test;
 
-import planar.Block;
 import planar.BlockEmbedding;
 import planar.PlanarBlockEmbedder;
 import draw.SignatureColorer;

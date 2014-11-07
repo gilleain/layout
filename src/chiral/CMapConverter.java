@@ -1,7 +1,7 @@
 package chiral;
 
 import graph.model.Graph;
-import planar.Vertex;
+import graph.model.Vertex;
 
 /**
  * Converts combinatorial maps to graphs.

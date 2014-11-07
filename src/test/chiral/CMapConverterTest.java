@@ -1,13 +1,13 @@
 package test.chiral;
 
 import graph.model.Graph;
+import graph.model.Vertex;
 
 import java.util.HashMap;
 import java.util.List;
 
 import org.junit.Test;
 
-import planar.Vertex;
 import chiral.CMapConverter;
 import chiral.CombinatorialMap;
 

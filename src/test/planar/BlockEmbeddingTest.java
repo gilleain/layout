@@ -1,14 +1,14 @@
 package test.planar;
 
+import graph.model.Block;
 import graph.model.Graph;
+import graph.model.Path;
+import graph.model.Vertex;
 
 import org.junit.Test;
 
-import planar.Block;
 import planar.BlockEmbedding;
 import planar.Face;
-import planar.Path;
-import planar.Vertex;
 
 public class BlockEmbeddingTest {
     

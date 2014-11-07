@@ -1,6 +1,7 @@
 package test.draw;
 
 import graph.model.Graph;
+import graph.model.Vertex;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -19,7 +20,6 @@ import org.junit.Test;
 
 import planar.BlockEmbedding;
 import planar.PlanarBlockEmbedder;
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 

@@ -1,11 +1,10 @@
 package test.planar;
 
 import graph.model.Graph;
+import graph.model.GraphObject;
+import graph.model.SpanningTree;
 
 import org.junit.Test;
-
-import planar.GraphObject;
-import planar.SpanningTree;
 
 public class SpanningTreeTest {
     

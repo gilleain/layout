@@ -1,6 +1,8 @@
 package layout;
 
+import graph.model.Block;
 import graph.model.Graph;
+import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
 import java.awt.geom.Point2D;
@@ -8,10 +10,8 @@ import java.awt.geom.Rectangle2D;
 import java.util.BitSet;
 import java.util.List;
 
-import planar.Block;
 import planar.BlockEmbedding;
 import planar.GraphEmbedding;
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 

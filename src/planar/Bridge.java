@@ -1,9 +1,15 @@
 package planar;
 
+import graph.model.Block;
+import graph.model.Edge;
+import graph.model.GraphObject;
+import graph.model.Path;
+import graph.model.SpanningTree;
+import graph.model.Vertex;
+import graph.visitor.DFSPathFinder;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import planar.visitor.DFSPathFinder;
 
 public class Bridge extends GraphObject {
 	
@@ -19,7 +25,11 @@ public class Bridge extends GraphObject {
 		this.endpoints = new ArrayList<Vertex>();
 	}
 
-	public void addEndpoint(Vertex vertex) {
+	public Bridge(Block component) {
+	    //TODO
+    }
+
+    public void addEndpoint(Vertex vertex) {
 		endpoints.add(vertex);
 		super.add(vertex);
 	}

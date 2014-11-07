@@ -1,13 +1,13 @@
 package macrocycle;
 
+import graph.model.Edge;
+import graph.model.Vertex;
 import group.Partition;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import planar.Edge;
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 

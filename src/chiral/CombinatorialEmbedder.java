@@ -5,12 +5,9 @@ import graph.tree.TreeCenterFinder;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.List;
-import java.util.Map;
 
 import planar.GraphEmbedder;
 import planar.GraphEmbedding;
-import planar.Vertex;
 import draw.Representation;
 
 /**

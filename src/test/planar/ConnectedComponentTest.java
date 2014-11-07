@@ -1,15 +1,14 @@
 package test.planar;
 
+import graph.model.Block;
 import graph.model.Graph;
+import graph.model.GraphObject;
+import graph.model.Vertex;
+import graph.visitor.ConnectedComponentFinder;
 
 import java.util.Random;
 
 import org.junit.Test;
-
-import planar.Block;
-import planar.GraphObject;
-import planar.Vertex;
-import planar.visitor.ConnectedComponentFinder;
 
 public class ConnectedComponentTest {
 	

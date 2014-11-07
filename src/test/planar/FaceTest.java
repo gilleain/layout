@@ -1,10 +1,11 @@
 package test.planar;
 
+import graph.model.Path;
+import graph.model.Vertex;
+
 import org.junit.Test;
 
 import planar.Face;
-import planar.Path;
-import planar.Vertex;
 
 public class FaceTest {
 	

@@ -1,6 +1,9 @@
 package planar;
 
+import graph.model.Block;
 import graph.model.Graph;
+import graph.model.Path;
+import graph.model.Vertex;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -109,7 +112,7 @@ public class BlockEmbedding {
 	 */
 	private Face embedCircuit(Block circuit) {
 		Vertex start = circuit.getVertex(0);
-		Face face = new Face(circuit.vertices);
+		Face face = new Face(circuit.getVertices());
 		embedCircuit(circuit, null, start, start, face);
 		return face;
 	}
@@ -205,8 +208,8 @@ public class BlockEmbedding {
 	}
 	
 	private void embed(Path path, Vertex start, Vertex end) {
-		Vertex startPartner = path.edges.get(0).getB();
-		Vertex endPartner   = path.edges.get(path.esize() - 1).getA();
+		Vertex startPartner = path.getEdges().get(0).getB();
+		Vertex endPartner   = path.getEdges().get(path.esize() - 1).getA();
 		
 		// start vertex
 		if (!combinatorialMap.containsKey(start)) {

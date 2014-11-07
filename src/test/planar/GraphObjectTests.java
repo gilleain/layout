@@ -1,11 +1,11 @@
 package test.planar;
 
-import org.junit.Test;
+import graph.model.Block;
+import graph.model.GraphObject;
+import graph.model.Vertex;
+import graph.visitor.SimpleCircuitFinder;
 
-import planar.Block;
-import planar.GraphObject;
-import planar.Vertex;
-import planar.visitor.SimpleCircuitFinder;
+import org.junit.Test;
 
 public class GraphObjectTests {
 	

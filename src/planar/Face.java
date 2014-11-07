@@ -1,5 +1,11 @@
 package planar;
 
+import graph.model.Block;
+import graph.model.Edge;
+import graph.model.GraphObject;
+import graph.model.Path;
+import graph.model.Vertex;
+
 import java.util.List;
 
 /**
@@ -22,7 +28,11 @@ public class Face extends GraphObject {
 	    super(vertices);
 	}
 	
-	/**
+	public Face(Block outerCycle) {
+        // TODO Auto-generated constructor stub
+    }
+
+    /**
 	 * Get the vertices of the cycle from start to end.
 	 * 
 	 * @param start
@@ -70,7 +80,7 @@ public class Face extends GraphObject {
 		
 		// add the path into the face in reverse
 		for (int eIndex = path.esize() - 1; eIndex >= 0; eIndex--) {
-			Edge pathEdge = path.edges.get(eIndex);
+			Edge pathEdge = path.getEdges().get(eIndex);
 			face.add(pathEdge.getB());
 			face.add(pathEdge.getA());
 			face.add(pathEdge.getB(), pathEdge.getA());
@@ -120,7 +130,7 @@ public class Face extends GraphObject {
 		
 		// add the path into the face
 		for (int eIndex = 0; eIndex < path.esize(); eIndex++) {
-			Edge pathEdge = path.edges.get(eIndex);
+			Edge pathEdge = path.getEdges().get(eIndex);
 			face.add(pathEdge.getA());
 			face.add(pathEdge.getB());
 			face.add(pathEdge.getA(), pathEdge.getB());

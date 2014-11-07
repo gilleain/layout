@@ -1,6 +1,8 @@
 package layout;
 
+import graph.model.Edge;
 import graph.model.Graph;
+import graph.model.Vertex;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -8,8 +10,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.List;
 import java.util.Map;
 
-import planar.Edge;
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 

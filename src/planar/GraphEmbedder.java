@@ -1,12 +1,14 @@
 package planar;
 
+import graph.model.Block;
+import graph.model.Edge;
 import graph.model.Graph;
+import graph.model.GraphObject;
+import graph.visitor.BlockFinder;
 
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
-
-import planar.visitor.BlockFinder;
 
 /**
  * Embed a graph in the plane (if possible) by dividing the graph into parts -

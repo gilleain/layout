@@ -1,6 +1,10 @@
 package planar;
 
+import graph.model.Block;
+import graph.model.CycleFinder;
+import graph.model.Edge;
 import graph.model.Graph;
+import graph.model.Path;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,9 +29,7 @@ public class DualTreeEmbedder {
 		Block b = new Block(graph);    // ugh! re-creating block-graph here
 		
 		// the list of faces
-		Face initialFace = new Face();
-		initialFace.addAllVertices(outerCycle.vertices);
-		initialFace.addAllEdges(outerCycle.edges);
+		Face initialFace = new Face(outerCycle);  // XXX unused?
 		
 		// isn't this just b.difference(outerCycle)?
 		List<Edge> bridgeEdges = getBridgeEdges(b, outerCycle);
@@ -56,7 +58,7 @@ public class DualTreeEmbedder {
 	
 	private static List<Edge> getBridgeEdges(Block b, Block outerCycle) {
 	    List<Edge> bridgeEdges = new ArrayList<Edge>();
-	    for (Edge e : b.edges) {
+	    for (Edge e : b.getEdges()) {
 	        if (outerCycle.hasEdge(e)) {
 	            continue;
 	        } else {

@@ -1,10 +1,10 @@
 package test.planar;
 
-import org.junit.Test;
+import graph.model.GraphObject;
+import graph.model.Path;
+import graph.visitor.DFSPathFinder;
 
-import planar.GraphObject;
-import planar.Path;
-import planar.visitor.DFSPathFinder;
+import org.junit.Test;
 
 public class DFSPathfinderTest {
 	

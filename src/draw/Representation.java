@@ -1,5 +1,8 @@
 package draw;
 
+import graph.model.Edge;
+import graph.model.Vertex;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -12,9 +15,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import planar.Edge;
-import planar.Vertex;
 
 
 

@@ -1,13 +1,19 @@
 package planar;
 
+import graph.model.Block;
+import graph.model.CycleFinder;
+import graph.model.Edge;
 import graph.model.Graph;
+import graph.model.GraphObject;
+import graph.model.Path;
+import graph.model.SpanningTree;
+import graph.model.Vertex;
+import graph.visitor.ConnectedComponentFinder;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import planar.visitor.ConnectedComponentFinder;
 
 /**
  * Implementation of algorithm due to Demoucron et al from page 88 of Alan
@@ -145,13 +151,13 @@ public class PlanarBlockEmbedder {
                 Vertex vJ = subgraph.getVertex(j);
                 Edge diffEdge = diff.getEdge(vI, vJ);
                 if (diffEdge != null && !subgraph.hasEdge(vI, vJ)) {
-                    diff.edges.remove(diffEdge);
+                    diff.getEdges().remove(diffEdge);
                     diff.removeIfDisconnected(vI);
                     diff.removeIfDisconnected(vJ);
                     Bridge edgeBridge = new Bridge();
                     edgeBridge.add(vI);
                     edgeBridge.add(vJ);
-                    edgeBridge.edges.add(diffEdge);
+                    edgeBridge.getEdges().add(diffEdge);
                     edgeBridge.addEndpoint(vI);
                     edgeBridge.addEndpoint(vJ);
                     bridges.add(edgeBridge);
@@ -165,10 +171,10 @@ public class PlanarBlockEmbedder {
 
         // convert each component to a bridge
         for (Block component : finder.getComponents()) {
-            Bridge bridge = new Bridge(component.vertices, component.edges);
+            Bridge bridge = new Bridge(component);
 
             // somewhat inefficient
-            for (Vertex v : bridge.vertices) {
+            for (Vertex v : bridge) {
                 if (subgraph.hasVertex(v)) {
                     bridge.addEndpoint(v);
                 }
@@ -208,7 +214,7 @@ public class PlanarBlockEmbedder {
     }
 
     private static void addPathToGraph(Block block, Path path) {
-        for (Edge edge : path.edges) {
+        for (Edge edge : path.getEdges()) {
             if (!block.hasVertex(edge.getA())) {
                 block.add(edge.getA());
             }

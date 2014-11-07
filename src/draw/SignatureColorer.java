@@ -2,6 +2,7 @@ package draw;
 
 import graph.model.Graph;
 import graph.model.GraphSignature;
+import graph.model.Vertex;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 import planar.BlockEmbedding;
-import planar.Vertex;
 import signature.SymmetryClass;
 
 public class SignatureColorer extends AbstractColorer {

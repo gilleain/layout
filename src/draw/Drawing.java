@@ -1,5 +1,7 @@
 package draw;
 
+import graph.model.Vertex;
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
@@ -8,7 +10,6 @@ import java.util.Map;
 import layout.Layout;
 import layout.Refiner;
 import planar.BlockEmbedding;
-import planar.Vertex;
 
 public class Drawing {
 	

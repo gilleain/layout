@@ -1,18 +1,17 @@
 package test.planar;
 
+import graph.model.Block;
 import graph.model.Graph;
 import graph.model.GraphFileReader;
+import graph.model.GraphObject;
+import graph.model.SpanningTree;
+import graph.visitor.BlockFinder;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 
 import org.junit.Test;
-
-import planar.Block;
-import planar.GraphObject;
-import planar.SpanningTree;
-import planar.visitor.BlockFinder;
 
 public class BlockFinderTest {
     

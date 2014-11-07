@@ -1,6 +1,8 @@
 package layout;
 
+import graph.model.Edge;
 import graph.model.Graph;
+import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
 import java.awt.geom.Line2D;
@@ -9,8 +11,6 @@ import java.awt.geom.Rectangle2D;
 import java.util.Arrays;
 import java.util.BitSet;
 
-import planar.Edge;
-import planar.Vertex;
 import draw.Representation;
 
 public class TopDownTreeLayout implements SimpleLayout {

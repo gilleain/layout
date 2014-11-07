@@ -1,6 +1,8 @@
 package planar;
 
+import graph.model.Block;
 import graph.model.Graph;
+import graph.model.Vertex;
 
 import java.util.ArrayList;
 import java.util.HashMap;

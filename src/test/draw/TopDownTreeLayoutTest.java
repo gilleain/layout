@@ -2,6 +2,7 @@ package test.draw;
 
 import graph.model.Graph;
 import graph.model.GraphFileReader;
+import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
 import java.awt.Color;
@@ -23,7 +24,6 @@ import layout.TopDownTreeLayout;
 
 import org.junit.Test;
 
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 

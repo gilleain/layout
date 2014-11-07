@@ -1,7 +1,13 @@
 package test.macrocycle;
 
+import graph.model.Block;
+import graph.model.CycleFinder;
+import graph.model.Edge;
 import graph.model.Graph;
 import graph.model.GraphSignature;
+import graph.model.SpanningTree;
+import graph.model.Vertex;
+import graph.visitor.ConnectedComponentFinder;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -25,15 +31,9 @@ import macrocycle.TriangleLattice;
 
 import org.junit.Test;
 
-import planar.Block;
 import planar.BlockEmbedding;
-import planar.CycleFinder;
 import planar.DualFinder;
-import planar.Edge;
 import planar.PlanarBlockEmbedder;
-import planar.SpanningTree;
-import planar.Vertex;
-import planar.visitor.ConnectedComponentFinder;
 
 import combinatorics.SubsetLister;
 

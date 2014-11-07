@@ -1,11 +1,12 @@
 package layout;
 
+import graph.model.Block;
+
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
-import planar.Block;
 import planar.BlockEmbedding;
 import planar.Face;
 

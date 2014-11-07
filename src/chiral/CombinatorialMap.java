@@ -1,11 +1,11 @@
 package chiral;
 
+import graph.model.Vertex;
+
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
-import planar.Vertex;
 
 /**
  * A thin wrapper around a map between a vertex and an ordered list 

@@ -2,6 +2,7 @@ package test.draw;
 
 import graph.model.Graph;
 import graph.model.GraphFileReader;
+import graph.model.Vertex;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -19,7 +20,6 @@ import layout.GraphGridLayout;
 
 import org.junit.Test;
 
-import planar.Vertex;
 import draw.ParameterSet;
 import draw.Representation;
 
