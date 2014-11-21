@@ -3,7 +3,7 @@ package planar;
 import graph.model.Block;
 import graph.model.Edge;
 import graph.model.IntGraph;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.visitor.BlockFinder;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class GraphEmbedder {
         
         // find all the blocks in the graph
         BlockFinder finder = new BlockFinder();
-        GraphObject graphObject = new GraphObject(graph);
+        VertexGraph graphObject = new VertexGraph(graph);
         graphObject.accept(finder);
         List<Block> blocks = finder.getBlocks();
         

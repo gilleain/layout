@@ -3,7 +3,7 @@ package test.planar;
 import graph.model.Block;
 import graph.model.IntGraph;
 import graph.model.GraphFileReader;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.SpanningTree;
 import graph.visitor.BlockFinder;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class BlockFinderTest {
     
-    public void findBlocks(GraphObject g) {
+    public void findBlocks(VertexGraph g) {
         System.out.println(g);
         BlockFinder finder = new BlockFinder();
         g.accept(finder);
@@ -27,24 +27,24 @@ public class BlockFinderTest {
     
     @Test
     public void bookTest() {
-        findBlocks(new GraphObject(new IntGraph("0:1,0:3,0:4,0:5,1:5,2:3,3:4")));
+        findBlocks(new VertexGraph(new IntGraph("0:1,0:3,0:4,0:5,1:5,2:3,3:4")));
     }
     
     @Test
     public void fourStar() {
-        findBlocks(new GraphObject(new IntGraph("0:1,0:2,0:3,0:4")));
+        findBlocks(new VertexGraph(new IntGraph("0:1,0:2,0:3,0:4")));
     }
     
     @Test
     public void triangularDumbellGraph() {
-        findBlocks(new GraphObject(new IntGraph("0:1,0:2,1:2,2:3,3:4,4:5,5:6,5:7,6:7")));
+        findBlocks(new VertexGraph(new IntGraph("0:1,0:2,1:2,2:3,3:4,4:5,5:6,5:7,6:7")));
     }
     
     public void graphListTest(String filePath) throws FileNotFoundException {
         BlockFinder finder = new BlockFinder();
         int count = 0;
         for (IntGraph g : new GraphFileReader(new FileReader(filePath))) {
-            GraphObject go = new GraphObject(g);
+            VertexGraph go = new VertexGraph(g);
             go.accept(finder);
             List<Block> blocks = finder.getBlocks();
             SpanningTree tree = new SpanningTree(go);

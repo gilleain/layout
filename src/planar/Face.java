@@ -2,7 +2,7 @@ package planar;
 
 import graph.model.Block;
 import graph.model.Edge;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.Path;
 import graph.model.Vertex;
 
@@ -14,7 +14,7 @@ import java.util.List;
  * @author maclean
  *
  */
-public class Face extends GraphObject {
+public class Face extends VertexGraph {
 
 	public Face() {
 		super();

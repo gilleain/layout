@@ -2,7 +2,7 @@ package planar;
 
 import graph.model.Block;
 import graph.model.Edge;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.Path;
 import graph.model.SpanningTree;
 import graph.model.Vertex;
@@ -11,7 +11,7 @@ import graph.visitor.DFSPathFinder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bridge extends GraphObject {
+public class Bridge extends VertexGraph {
 	
 	private List<Vertex> endpoints;
 	

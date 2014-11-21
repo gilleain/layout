@@ -1,6 +1,6 @@
 package test.planar;
 
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.Path;
 import graph.visitor.DFSPathFinder;
 
@@ -10,7 +10,7 @@ public class DFSPathfinderTest {
 	
 	@Test
 	public void linearTest() {
-		GraphObject g = new GraphObject(5);
+		VertexGraph g = new VertexGraph(5);
 		g.add(0, 1);
 		g.add(1, 2);
 		g.add(2, 3);
@@ -24,7 +24,7 @@ public class DFSPathfinderTest {
 	
 	@Test
 	public void cycleTest() {
-		GraphObject g = new GraphObject(5);
+		VertexGraph g = new VertexGraph(5);
 		g.add(0, 1, 4);
 		g.add(1, 2);
 		g.add(2, 3);
@@ -38,7 +38,7 @@ public class DFSPathfinderTest {
 	
 	@Test
 	public void cycleWithTwoOutsTest() {
-		GraphObject g = new GraphObject(7);
+		VertexGraph g = new VertexGraph(7);
 		g.add(0, 1, 4);
 		g.add(1, 2, 5);
 		g.add(2, 3);

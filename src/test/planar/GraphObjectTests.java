@@ -1,7 +1,7 @@
 package test.planar;
 
 import graph.model.Block;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.Vertex;
 import graph.visitor.SimpleCircuitFinder;
 
@@ -9,8 +9,8 @@ import org.junit.Test;
 
 public class GraphObjectTests {
 	
-	public GraphObject testGraph() {
-		GraphObject g = new GraphObject(8);
+	public VertexGraph testGraph() {
+		VertexGraph g = new VertexGraph(8);
 		g.add(0, 1, 3, 4);
 		g.add(1, 2, 5);
 		g.add(2, 3, 5, 6);
@@ -21,16 +21,16 @@ public class GraphObjectTests {
 	
 	@Test
 	public void indexOfTest() {
-	    GraphObject g = testGraph();
+	    VertexGraph g = testGraph();
 	    int index = g.indexOf(new Vertex(5));
 	    System.out.println(index);
 	}
 	
 	@Test
 	public void diffTest() {
-		GraphObject g = testGraph();
+		VertexGraph g = testGraph();
 		
-		GraphObject sg = new GraphObject(4);
+		VertexGraph sg = new VertexGraph(4);
 		sg.add(0, 1, 3);
 		sg.add(1, 2);
 		sg.add(2, 3);
@@ -42,12 +42,12 @@ public class GraphObjectTests {
 	
 	@Test
 	public void cycleWithEdgeBridgeDiffTest() {
-		GraphObject g = new GraphObject(4);
+		VertexGraph g = new VertexGraph(4);
 		g.add(0, 1, 2, 3);
 		g.add(1, 2);
 		g.add(2, 3);
 		
-		GraphObject sg = new GraphObject(4);
+		VertexGraph sg = new VertexGraph(4);
 		sg.add(0, 1, 3);
 		sg.add(1, 2);
 		sg.add(2, 3);
@@ -59,13 +59,13 @@ public class GraphObjectTests {
 	
 	@Test
 	public void cycleWithVertexBridgeDiffTest() {
-		GraphObject g = new GraphObject(5);
+		VertexGraph g = new VertexGraph(5);
 		g.add(0, 1, 4, 3);
 		g.add(1, 2);
 		g.add(2, 3);
 		g.add(4, 2);
 		
-		GraphObject sg = new GraphObject(4);
+		VertexGraph sg = new VertexGraph(4);
 		sg.add(0, 1, 3);
 		sg.add(1, 2);
 		sg.add(2, 3);
@@ -77,7 +77,7 @@ public class GraphObjectTests {
 	
 	@Test
 	public void cycleTest() {
-		GraphObject g = testGraph();
+		VertexGraph g = testGraph();
 		SimpleCircuitFinder finder = new SimpleCircuitFinder();
 		g.accept(finder);
 		for (Block circuit : finder.getCircuits()) {

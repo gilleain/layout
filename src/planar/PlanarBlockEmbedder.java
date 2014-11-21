@@ -4,7 +4,7 @@ import graph.model.Block;
 import graph.model.CycleFinder;
 import graph.model.Edge;
 import graph.model.IntGraph;
-import graph.model.GraphObject;
+import graph.model.VertexGraph;
 import graph.model.Path;
 import graph.model.SpanningTree;
 import graph.model.Vertex;
@@ -140,7 +140,7 @@ public class PlanarBlockEmbedder {
      */
     private static List<Bridge> findBridges(Block subgraph, Block graph) {
         // get the graph minus the subgraph
-        GraphObject diff = graph.difference(subgraph);
+        VertexGraph diff = graph.difference(subgraph);
         // System.out.println("Diff " + diff);
         List<Bridge> bridges = new ArrayList<Bridge>();
 
@@ -188,7 +188,7 @@ public class PlanarBlockEmbedder {
         List<Vertex> endpoints = bridge.getEndpoints();
         // System.out.println("endpoints = " + endpoints);
         SpanningTree spanningTree = bridge.getTree();
-        GraphObject tree = spanningTree.getTree(); // ugh
+        VertexGraph tree = spanningTree.getTree(); // ugh
         for (int i = 0; i < endpoints.size(); i++) {
             Vertex vi = endpoints.get(i);
             int vIdxI = tree.indexOf(vi);
