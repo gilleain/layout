@@ -1,6 +1,6 @@
 package test.planar;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Rectangle2D;
 import java.io.IOException;
@@ -28,15 +28,15 @@ public class SignatureGraphTests extends AbstractDrawingTest {
 		return OUTPUT_DIR;
 	}
 	
-	public Graph convert(SimpleGraph graph) {
-		Graph cGraph = new Graph();
+	public IntGraph convert(SimpleGraph graph) {
+		IntGraph cGraph = new IntGraph();
 		for (SimpleGraph.Edge edge : graph.edges) {
 			cGraph.makeEdge(edge.a, edge.b);
 		}
 		return cGraph;
 	}
 	
-	public void testLarge(Graph graph, String filename) throws IOException {
+	public void testLarge(IntGraph graph, String filename) throws IOException {
 	    BlockEmbedding embedding = PlanarBlockEmbedder.embed(graph);
         ParameterSet params = new ParameterSet();
         params.set("lineWidth", 2);
@@ -50,19 +50,19 @@ public class SignatureGraphTests extends AbstractDrawingTest {
 	
 	@Test
 	public void testFullerene() throws IOException {
-	    Graph graph = convert(SimpleGraphFactory.make26Fullerene());
+	    IntGraph graph = convert(SimpleGraphFactory.make26Fullerene());
 	    testLarge(graph, "fullerene26_refined.png");
 	}
 	
 	@Test
     public void testCuneane() throws IOException {
-        Graph graph = convert(SimpleGraphFactory.makeCuneane());
+        IntGraph graph = convert(SimpleGraphFactory.makeCuneane());
         testLarge(graph, "cuneane_refined.png");
     }
 	
 	@Test
     public void testGrotschGraph() throws IOException {
-        Graph graph = convert(SimpleGraphFactory.makeGrotschGraph());
+        IntGraph graph = convert(SimpleGraphFactory.makeGrotschGraph());
         testLarge(graph, "grotsch_refined.png");
     }
 	

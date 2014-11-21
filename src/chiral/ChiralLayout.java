@@ -1,6 +1,6 @@
 package chiral;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Rectangle2D;
 
@@ -9,6 +9,6 @@ import draw.Representation;
 public interface ChiralLayout {
     
     public Representation layout(
-            Graph graph, CombinatorialMap cm, Rectangle2D canvas);
+            IntGraph graph, CombinatorialMap cm, Rectangle2D canvas);
     
 }

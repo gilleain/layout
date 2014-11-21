@@ -1,7 +1,7 @@
 package test.planar;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Path;
 import graph.model.Vertex;
 
@@ -14,7 +14,7 @@ public class BlockEmbeddingTest {
     
     @Test
     public void largeCycleTest() {
-        Graph graph = new Graph("0:1, 2:3, 4:5, 0:6, 6:7, 7:8, 8:9, 9:1, 2:10, 10:11, " +
+        IntGraph graph = new IntGraph("0:1, 2:3, 4:5, 0:6, 6:7, 7:8, 8:9, 9:1, 2:10, 10:11, " +
         		                "11:12, 12:13, 13:3, 4:14, 14:15, 15:16, 16:17, 17:5");
         Block b = new Block(graph);
         BlockEmbedding em = new BlockEmbedding(graph, b);
@@ -23,7 +23,7 @@ public class BlockEmbeddingTest {
 	
 	@Test
 	public void initial5CycleTest() {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block initialCycle = new Block(5);
 		initialCycle.add(0, 1, 4);
 		initialCycle.add(1, 2);
@@ -36,7 +36,7 @@ public class BlockEmbeddingTest {
 	
 	@Test
 	public void initial6CycleTest() {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block initialCycle = new Block(6);
 		initialCycle.add(0, 1, 5);
 		initialCycle.add(1, 2);
@@ -50,7 +50,7 @@ public class BlockEmbeddingTest {
 	
 	@Test
 	public void fourCycleFaceTest() {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block initialCycle = new Block(4);
 		initialCycle.add(0, 2, 3);
 		initialCycle.add(1, 2);
@@ -62,7 +62,7 @@ public class BlockEmbeddingTest {
 	
 	@Test
 	public void fourCycleFaceSplitTest() {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		
 		// a four cycle
 		Block initialCycle = new Block(4);

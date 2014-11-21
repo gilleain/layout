@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 
 import java.awt.Color;
@@ -29,11 +29,11 @@ public class GraphLayoutTest extends BaseDrawTest {
     
     public static final String OUT_DIR = "output/planar/graph";
     
-    public void testGraph(Graph g, int w, int h, String filename) throws IOException {
+    public void testGraph(IntGraph g, int w, int h, String filename) throws IOException {
         testGraph(g, w, h, 30, false, "misc", filename);
     }
     
-    public void testGraph(Graph g, int w, int h, int edgeLen, boolean drawNumbers, String subdir, String filename) throws IOException {
+    public void testGraph(IntGraph g, int w, int h, int edgeLen, boolean drawNumbers, String subdir, String filename) throws IOException {
         GraphEmbedding ge = GraphEmbedder.embed(g);
         ParameterSet params = new ParameterSet();
         params.set("edgeLength", edgeLen);
@@ -62,7 +62,7 @@ public class GraphLayoutTest extends BaseDrawTest {
     public void testFile(String inputFilename, int w, int h, String prefix, int limit) throws IOException {
         GraphFileReader graphs = new GraphFileReader(new FileReader(new File(IN_DIR, inputFilename)));
         int counter = 0;
-        for (Graph g : graphs) {
+        for (IntGraph g : graphs) {
             try {
                 testGraph(g, w, h, 30, false, prefix, prefix + "_" + counter + ".png");
                 System.out.println("done " + counter + "\t" + g);
@@ -81,52 +81,52 @@ public class GraphLayoutTest extends BaseDrawTest {
     
     @Test
     public void treeOn5() throws IOException {
-        testGraph(new Graph("0:1,0:2,1:3,2:4"), 300, 300, "treeOn5.png");
+        testGraph(new IntGraph("0:1,0:2,1:3,2:4"), 300, 300, "treeOn5.png");
     }
     
     @Test
     public void pawGraph() throws IOException {
-        testGraph(new Graph("0:1,0:2,1:2,2:3"), 300, 300, "paw.png");
+        testGraph(new IntGraph("0:1,0:2,1:2,2:3"), 300, 300, "paw.png");
     }
     
     @Test
     public void spiraTriangles() throws IOException {
-        testGraph(new Graph("0:1,0:2,1:2,2:3,2:4,3:4"), 300, 300, 50, true, "misc", "spiraTri.png");
+        testGraph(new IntGraph("0:1,0:2,1:2,2:3,2:4,3:4"), 300, 300, 50, true, "misc", "spiraTri.png");
     }
     
     @Test
     public void dumbellTriangles() throws IOException {
-        testGraph(new Graph("0:1,0:2,1:2,2:3,3:4,3:5,4:5"), 300, 300, "dumbellTri.png");
+        testGraph(new IntGraph("0:1,0:2,1:2,2:3,3:4,3:5,4:5"), 300, 300, "dumbellTri.png");
     }
     
     @Test
     public void hornedTriangle() throws IOException {
-        testGraph(new Graph("0:1,0:2,1:2,2:3,2:4"), 400, 400, 50, true, "misc", "hornedTri.png");
+        testGraph(new IntGraph("0:1,0:2,1:2,2:3,2:4"), 400, 400, 50, true, "misc", "hornedTri.png");
     }
     
     @Test
     public void spikedTriangle() throws IOException {
-        testGraph(new Graph("0:1,0:2,0:3,1:2,1:4"), 400, 400, 50, true, "misc", "spikedTri.png");
+        testGraph(new IntGraph("0:1,0:2,0:3,1:2,1:4"), 400, 400, 50, true, "misc", "spikedTri.png");
     }
     
     @Test
     public void hornedSquare() throws IOException {
-        testGraph(new Graph("0:2, 0:3, 1:2, 1:3, 2:4, 2:5"), 400, 400, 50, true, "misc", "hornedSq.png");
+        testGraph(new IntGraph("0:2, 0:3, 1:2, 1:3, 2:4, 2:5"), 400, 400, 50, true, "misc", "hornedSq.png");
     }
     
     @Test
     public void bugOn6() throws IOException {
-        testGraph(new Graph("0:1, 0:2, 0:3, 0:4, 0:5, 1:2, 3:4"), 400, 400, 50, true, "misc", "bugOn6.png");
+        testGraph(new IntGraph("0:1, 0:2, 0:3, 0:4, 0:5, 1:2, 3:4"), 400, 400, 50, true, "misc", "bugOn6.png");
     }
     
     @Test
     public void bugOn6_105() throws IOException {
-        testGraph(new Graph("0:1, 0:2, 0:3, 0:4, 0:5, 1:2, 1:3, 1:4, 2:3, 2:4, 3:5, 4:5"), 400, 400, 50, true, "misc", "bugOn6_105.png");
+        testGraph(new IntGraph("0:1, 0:2, 0:3, 0:4, 0:5, 1:2, 1:3, 1:4, 2:3, 2:4, 3:5, 4:5"), 400, 400, 50, true, "misc", "bugOn6_105.png");
     }
     
     @Test
     public void missingEight() throws IOException {
-        testGraph(new Graph("0:1, 0:2, 0:3, 0:5, 1:2, 1:3, 1:6, 2:4, 2:7, 3:4, 4:5, 4:6, 5:6, 5:7, 6:7"),
+        testGraph(new IntGraph("0:1, 0:2, 0:3, 0:5, 1:2, 1:3, 1:6, 2:4, 2:7, 3:4, 4:5, 4:6, 5:6, 5:7, 6:7"),
                 400, 400, 50, true, "misc", "missingEight.png");
     }
     

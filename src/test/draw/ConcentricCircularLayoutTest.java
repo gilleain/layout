@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -24,7 +24,7 @@ public class ConcentricCircularLayoutTest extends BaseDrawTest {
     
     public static final String OUT_DIR = "output/planar/concentric";
     
-    public void test(Graph g, int w, int h, String filename) throws IOException {
+    public void test(IntGraph g, int w, int h, String filename) throws IOException {
         BlockEmbedding be = PlanarBlockEmbedder.embed(g);
         ConcentricCircularLayout layout = new ConcentricCircularLayout();
         Representation rep = layout.layout(be, new Rectangle2D.Double(0, 0, w, h));
@@ -40,7 +40,7 @@ public class ConcentricCircularLayoutTest extends BaseDrawTest {
     
     @Test
     public void fourCycle() throws IOException {
-        test(new Graph("0:1, 0:2, 1:3, 2:3"), 400, 400, "fourCycle.png");
+        test(new IntGraph("0:1, 0:2, 1:3, 2:3"), 400, 400, "fourCycle.png");
     }
     
 }

@@ -1,6 +1,6 @@
 package layout;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
@@ -45,12 +45,12 @@ public class GraphGridLayout {
         return totalHeight;
     }
     
-    public Map<Graph, Representation> layout(Iterable<Graph> graphs) {
-        Map<Graph, Representation> repMap = new HashMap<Graph, Representation>();
+    public Map<IntGraph, Representation> layout(Iterable<IntGraph> graphs) {
+        Map<IntGraph, Representation> repMap = new HashMap<IntGraph, Representation>();
         List<Representation> reps = new ArrayList<Representation>();
         
         int counter = 0;
-        for (Graph g : graphs) {
+        for (IntGraph g : graphs) {
             Representation rep = null;
             try {
                 rep = makeRep(g, cellWidth, cellHeight, params); 
@@ -96,7 +96,7 @@ public class GraphGridLayout {
         return repMap;
     }
     
-    public Representation makeRep(Graph g, int w, int h, ParameterSet params) {
+    public Representation makeRep(IntGraph g, int w, int h, ParameterSet params) {
         GraphEmbedding ge = GraphEmbedder.embed(g);
         GraphLayout layout = new GraphLayout(params);
         Representation rep = layout.layout(ge, new Rectangle2D.Double(0, 0, w, h));

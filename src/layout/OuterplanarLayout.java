@@ -1,7 +1,7 @@
 package layout;
 
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
@@ -35,7 +35,7 @@ public class OuterplanarLayout implements Layout {
 
 	public Representation layout(BlockEmbedding em, Rectangle2D canvas) {
 	    Representation representation = new Representation();
-	    Graph dual = DualFinder.getDual(em);
+	    IntGraph dual = DualFinder.getDual(em);
 	    List<Integer> treeCenter = TreeCenterFinder.findCenter(dual);
 	    List<Face> faces = em.getFaces();
 	    Point2D centerPoint = new Point2D.Double(canvas.getWidth() / 2, canvas.getHeight() / 2);
@@ -58,7 +58,7 @@ public class OuterplanarLayout implements Layout {
         return null;
     }
 
-    private void layout(int current, List<Face> faces, Graph dual, BitSet visited, Point2D center, double startAngle, int startVertexIndex, int endVertexIndex, Representation representation) {
+    private void layout(int current, List<Face> faces, IntGraph dual, BitSet visited, Point2D center, double startAngle, int startVertexIndex, int endVertexIndex, Representation representation) {
 	    Face face = faces.get(current);
 //	    System.out.println("drawing face " + current + " " + face + " c=" + center + " a=" + Math.toDegrees(startAngle));
 	    visited.set(current);
@@ -159,7 +159,7 @@ public class OuterplanarLayout implements Layout {
         return new Point2D.Double(cX + ((dX / l) * separation), cY + ((dY / l) * separation));
 	}
 	
-	private void layout(int faceIndexA, int faceIndexB, List<Face> faces, Graph dual, BitSet visited, Point2D center, Representation representation) {
+	private void layout(int faceIndexA, int faceIndexB, List<Face> faces, IntGraph dual, BitSet visited, Point2D center, Representation representation) {
 	    Face faceA = faces.get(faceIndexA);
 	    Face faceB = faces.get(faceIndexB);
 	    

@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 import graph.model.Vertex;
 
@@ -64,12 +64,12 @@ public class MassLayoutTest extends BaseDrawTest {
         params.set("padding", 10);
         
         GraphGridLayout layout = new GraphGridLayout(w, h, params);
-        Map<Graph, Representation> reps = layout.layout(graphs); 
+        Map<IntGraph, Representation> reps = layout.layout(graphs); 
         
         Image image = makeBlankImage(layout.getTotalWidth(), layout.getTotalHeight());
         Graphics2D graphics = (Graphics2D) image.getGraphics();
         graphics.setColor(Color.BLACK);
-        for (Graph g : reps.keySet()) {
+        for (IntGraph g : reps.keySet()) {
             Representation rep = reps.get(g);
             if (rep != null) {
                 Map<Vertex, Color> colorMap = getColorMap(g);
@@ -79,7 +79,7 @@ public class MassLayoutTest extends BaseDrawTest {
         ImageIO.write((RenderedImage) image, "PNG", getFile(OUT_DIR, outputFilename + ".png"));
     }
     
-    public Map<Vertex, Color> getColorMap(Graph g) {
+    public Map<Vertex, Color> getColorMap(IntGraph g) {
         Map<Vertex, Color> degreeMap = new HashMap<Vertex, Color>();
         for (int i = 0; i < g.vsize(); i++) {
             switch (g.degree(i)) {

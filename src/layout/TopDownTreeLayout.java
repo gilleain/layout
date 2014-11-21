@@ -1,7 +1,7 @@
 package layout;
 
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
@@ -27,7 +27,7 @@ public class TopDownTreeLayout implements SimpleLayout {
     
     private Representation representation;
     
-    public Representation layout(Graph tree, Rectangle2D canvas) {
+    public Representation layout(IntGraph tree, Rectangle2D canvas) {
         representation = new Representation();
         int root = TreeCenterFinder.findUniqueCenter(tree);
         int[] depthList = new int[tree.getVertexCount()];
@@ -45,13 +45,13 @@ public class TopDownTreeLayout implements SimpleLayout {
         return representation;
     }
     
-    public void layoutTree(Graph tree, int root, int leafCount, int maxDepth, int[] depthList) {
+    public void layoutTree(IntGraph tree, int root, int leafCount, int maxDepth, int[] depthList) {
         this.xSep = width / (leafCount + 1);
         this.ySep = height / (maxDepth + 1);
         layout(tree, root, -1, depthList, new BitSet());
     }
     
-    public double layout(Graph tree, int root, int parent, int[] depthList, BitSet visited) {
+    public double layout(IntGraph tree, int root, int parent, int[] depthList, BitSet visited) {
         visited.set(root);
         
         double y  = depthList[root] * ySep;
@@ -100,7 +100,7 @@ public class TopDownTreeLayout implements SimpleLayout {
         return x;
     }
     
-    private int calculateDepth(Graph tree, int root, int[] depthList, int depth) {
+    private int calculateDepth(IntGraph tree, int root, int[] depthList, int depth) {
         depthList[root] = depth;
         int maxDepth = depth;
         for (int child : tree.getConnected(root)) {
@@ -113,12 +113,12 @@ public class TopDownTreeLayout implements SimpleLayout {
         return maxDepth;
     }
     
-    private int getWidth(Graph tree, int root) {
+    private int getWidth(IntGraph tree, int root) {
         BitSet visited = new BitSet();
         return getWidth(tree, root, visited);
     }
     
-    private int getWidth(Graph tree, int root, BitSet visited) {
+    private int getWidth(IntGraph tree, int root, BitSet visited) {
         visited.set(root);
         int numberOfChildren = 0;
         boolean isChild = true;

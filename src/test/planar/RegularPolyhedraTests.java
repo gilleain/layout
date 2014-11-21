@@ -1,6 +1,6 @@
 package test.planar;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFactory;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class RegularPolyhedraTests extends AbstractDrawingTest {
 		return OUTPUT_DIR;
 	}
 	
-	public void embed(Graph g, String outfileName) throws IOException {
+	public void embed(IntGraph g, String outfileName) throws IOException {
 	    BlockEmbedding em = PlanarBlockEmbedder.embed(g);
         if (em != null) {
             draw(em, WIDTH, HEIGHT, outfileName + ".png");
@@ -49,7 +49,7 @@ public class RegularPolyhedraTests extends AbstractDrawingTest {
 	
 	@Test
 	public void a3_6_6_v12() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 5, 6);
 		graph.makeMultipleEdges(1, 2, 7);
 		graph.makeMultipleEdges(2, 3, 7);
@@ -70,7 +70,7 @@ public class RegularPolyhedraTests extends AbstractDrawingTest {
 	
 	@Test
 	public void a3_4_3_4_v12() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 3, 4, 7);
 		graph.makeMultipleEdges(1, 2, 4, 5);
 		graph.makeMultipleEdges(2, 3, 5, 6);
@@ -92,7 +92,7 @@ public class RegularPolyhedraTests extends AbstractDrawingTest {
 	@Test
 	public void a3_6_6_v16() throws IOException {
 		// XXX THIS IS NOT A REGULAR POLYHEDRA!
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 5, 6);
 		graph.makeMultipleEdges(1, 2, 6);
 		graph.makeMultipleEdges(2, 3, 7);

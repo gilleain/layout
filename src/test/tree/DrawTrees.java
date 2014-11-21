@@ -1,6 +1,6 @@
 package test.tree;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
@@ -48,7 +48,7 @@ public class DrawTrees {
 		Rectangle2D canvas = new Rectangle2D.Double(0, 0, w, h);
 		int count = 0;
 		String prefix = inputFilename.substring(0, inputFilename.length() - 4);
-		for (Graph tree : file) {
+		for (IntGraph tree : file) {
 			Representation repr = layout.layout(tree, canvas);
 			File outFile = new File(dir, prefix + "_tree" + count + ".png");
 			Image image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);

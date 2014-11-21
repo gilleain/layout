@@ -1,6 +1,6 @@
 package macrocycle;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -18,7 +18,7 @@ public class HexLattice implements Lattice {
     
     private List<Line2D> latticeLines;
     
-    private Graph latticeGraph;
+    private IntGraph latticeGraph;
     
     /**
      * The radius of the circle centered at a hexagon
@@ -47,7 +47,7 @@ public class HexLattice implements Lattice {
 //        latticePoints = new HashMap<Integer, Point2D>();
         latticePoints = new ArrayList<Point2D>();
         latticeLines = new ArrayList<Line2D>();
-        latticeGraph = new Graph();
+        latticeGraph = new IntGraph();
         s = (Math.sqrt(3) * r) / 2;
         int pointIndex = 0;
         double x = s;
@@ -112,7 +112,7 @@ public class HexLattice implements Lattice {
         }
     }
     
-    public HexLattice(List<Point2D> latticePoints, List<Line2D> latticeLines, Graph latticeGraph) {
+    public HexLattice(List<Point2D> latticePoints, List<Line2D> latticeLines, IntGraph latticeGraph) {
         this.latticePoints = latticePoints;
         this.latticeLines = latticeLines;
         this.latticeGraph = latticeGraph;
@@ -177,7 +177,7 @@ public class HexLattice implements Lattice {
         return latticeLines;
     }
 
-    public Graph getGraph() {
+    public IntGraph getGraph() {
         return latticeGraph;
     }
     

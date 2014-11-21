@@ -1,7 +1,7 @@
 package test.planar;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphObject;
 import graph.model.Vertex;
 import graph.visitor.ConnectedComponentFinder;
@@ -38,14 +38,14 @@ public class ConnectedComponentTest {
 	
 	@Test
 	public void bugTest() {
-	    Graph g = new Graph("0:1, 0:3, 1:7, 2:3, 2:7, 4:5, 4:6, 5:6");
+	    IntGraph g = new IntGraph("0:1, 0:3, 1:7, 2:3, 2:7, 4:5, 4:6, 5:6");
 	    GraphObject go = new GraphObject(g);
 	    check(go);
 	}
 	
 	@Test
 	public void bugTest2() {
-	    Graph g = new Graph("0:1, 1:2, 0:7, 7:8, 8:9, 2:9, 10:11, 11:12, 10:17, 17:18, 18:19, 12:19");
+	    IntGraph g = new IntGraph("0:1, 1:2, 0:7, 7:8, 8:9, 2:9, 10:11, 11:12, 10:17, 17:18, 18:19, 12:19");
 //	    Graph g = new Graph("0:1, 1:2, 0:5, 4:5, 3:4, 2:3, 6:7, 7:8, 6:11, 10:11, 9:10, 8:9");
 	    GraphObject go = new GraphObject(g);
 	    check(go);
@@ -54,7 +54,7 @@ public class ConnectedComponentTest {
 	@Test
     public void bugTest3() {
 //        Graph g = new Graph("7:5, 6:7, 5:6");
-	    Graph g = new Graph("5:6, 5:7, 6:7");
+	    IntGraph g = new IntGraph("5:6, 5:7, 6:7");
         GraphObject go = new GraphObject(g);
         check(go);
     }

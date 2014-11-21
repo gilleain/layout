@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
@@ -40,7 +40,7 @@ public class TopDownTreeLayoutTest {
         return params;
     }
     
-    public void singleTree(Graph tree, String filename) throws IOException {
+    public void singleTree(IntGraph tree, String filename) throws IOException {
         File dir = new File(OUT_DIR);
         if (!dir.exists()) {
             dir.mkdirs();
@@ -62,12 +62,12 @@ public class TopDownTreeLayoutTest {
     
     @Test
     public void singleTestA() throws IOException {
-        singleTree(new Graph("0:1,0:2,1:3,2:4,3:5"), "1_2_3_1_2.png");
+        singleTree(new IntGraph("0:1,0:2,1:3,2:4,3:5"), "1_2_3_1_2.png");
     }
     
     @Test
     public void singleTestB() throws IOException {
-        singleTree(new Graph("0:2,0:4,0:5,0:6,1:2,1:3"), "1_2_2_2_1_2.png");
+        singleTree(new IntGraph("0:2,0:4,0:5,0:6,1:2,1:3"), "1_2_2_2_1_2.png");
     }
     
     public void draw(String inputFilename) throws IOException {
@@ -84,7 +84,7 @@ public class TopDownTreeLayoutTest {
         Rectangle2D canvas = new Rectangle2D.Double(0, 0, w, h);
         int count = 0;
         String prefix = inputFilename.substring(0, inputFilename.length() - 4);
-        for (Graph tree : file) {
+        for (IntGraph tree : file) {
             Representation repr = layout.layout(tree, canvas);
             File outFile = new File(dir, prefix + "_tree" + count + ".png");
             Image image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);

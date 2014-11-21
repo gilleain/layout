@@ -1,6 +1,6 @@
 package chiral;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 
 /**
@@ -11,8 +11,8 @@ import graph.model.Vertex;
  */
 public class CMapConverter {
     
-    public static Graph toGraph(CombinatorialMap combinatorialMap) {
-        Graph g = new Graph();
+    public static IntGraph toGraph(CombinatorialMap combinatorialMap) {
+        IntGraph g = new IntGraph();
         for (Vertex v : combinatorialMap) {
             int vi = v.getIndex();
             for (Vertex w : combinatorialMap.getNeighbours(v)) {

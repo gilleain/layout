@@ -1,6 +1,6 @@
 package test.planar;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -47,7 +47,7 @@ public class PlanarEmbedderTest {
 		}
 	}
 	
-	public void embedAndDraw(Graph graph, String name) throws IOException {
+	public void embedAndDraw(IntGraph graph, String name) throws IOException {
 	    BlockEmbedding em = PlanarBlockEmbedder.embed(graph);
         if (em != null) {
             draw(em, name);
@@ -58,32 +58,32 @@ public class PlanarEmbedderTest {
 	
 	@Test
 	public void cuneaneTest() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:3,0:5,1:2,1:7,2:3,2:7,3:4,4:5,4:6,5:6,6:7"), "cuneane");
+	    embedAndDraw(new IntGraph("0:1,0:3,0:5,1:2,1:7,2:3,2:7,3:4,4:5,4:6,5:6,6:7"), "cuneane");
 	}
 	
 	@Test
 	public void k4Test() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:2,0:3,1:2,1:3,2:3"), "k4");
+	    embedAndDraw(new IntGraph("0:1,0:2,0:3,1:2,1:3,2:3"), "k4");
 	}
 	
 	@Test
 	public void squareHubWheelTest() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:3,0:4,1:2,1:4,2:3,2:4,3:4"), "squareHubWheel");
+	    embedAndDraw(new IntGraph("0:1,0:3,0:4,1:2,1:4,2:3,2:4,3:4"), "squareHubWheel");
 	}
 	
 	@Test
 	public void cycle456TreeTest() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:10,1:2,1:7,2:3,3:4,3:6,4:5,5:6,6:7,7:8,8:9,9:10"), "cycle456Tree");
+	    embedAndDraw(new IntGraph("0:1,0:10,1:2,1:7,2:3,3:4,3:6,4:5,5:6,6:7,7:8,8:9,9:10"), "cycle456Tree");
 	}
 	
 	@Test
 	public void twoFusedHexagons() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:9,1:2,1:6,2:3,3:4,4:5,5:6,6:7,7:8,8:9"), "twoFusedHexagons");
+	    embedAndDraw(new IntGraph("0:1,0:9,1:2,1:6,2:3,3:4,4:5,5:6,6:7,7:8,8:9"), "twoFusedHexagons");
 	}
 	
 	@Test
 	public void threeFusedSquares() throws IOException {
-	    embedAndDraw(new Graph("0:1,0:7,1:2,1:6,2:3,2:5,3:4,4:5,5:6,6:7"), "threeFusedSquares");
+	    embedAndDraw(new IntGraph("0:1,0:7,1:2,1:6,2:3,2:5,3:4,4:5,5:6,6:7"), "threeFusedSquares");
 	}
 
 }

@@ -1,6 +1,6 @@
 package chiral;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.tree.TreeCenterFinder;
 
 import java.awt.geom.Point2D;
@@ -27,12 +27,12 @@ public class CombinatorialEmbedder {
         Representation rep = new Representation();
         
         // convert the map to a graph so that we can analyse the parts
-        Graph g = CMapConverter.toGraph(cm);
+        IntGraph g = CMapConverter.toGraph(cm);
         
         // we still need to embed this graph, in order to get the blocks 
         GraphEmbedding embedding = GraphEmbedder.embed(g);
         
-        Graph partTree = embedding.getPartGraph();
+        IntGraph partTree = embedding.getPartGraph();
         int centerIndex;
         if (partTree.esize() == 0) {
             centerIndex = 0;

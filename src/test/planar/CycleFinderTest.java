@@ -2,7 +2,7 @@ package test.planar;
 
 import graph.model.Block;
 import graph.model.CycleFinder;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.SpanningTree;
 
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class CycleFinderTest {
     
     @Test
     public void fusedPentagons() {
-        Graph g = new Graph("0:1,0:4,1:2,2:3,3:4,3:7,4:5,5:6,6:7");
+        IntGraph g = new IntGraph("0:1,0:4,1:2,2:3,3:4,3:7,4:5,5:6,6:7");
         Block b = new Block(g);
         SpanningTree tree = new SpanningTree(b);
         System.out.println("T= " + tree.getTree());

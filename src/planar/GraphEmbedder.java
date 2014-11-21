@@ -2,7 +2,7 @@ package planar;
 
 import graph.model.Block;
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphObject;
 import graph.visitor.BlockFinder;
 
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class GraphEmbedder {
     
-    public static GraphEmbedding embed(Graph graph) {
+    public static GraphEmbedding embed(IntGraph graph) {
         
         // find all the blocks in the graph
         BlockFinder finder = new BlockFinder();

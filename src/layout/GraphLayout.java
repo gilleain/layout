@@ -1,7 +1,7 @@
 package layout;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
@@ -25,7 +25,7 @@ public class GraphLayout {
     
     public Representation layout(GraphEmbedding embedding, Rectangle2D canvas) {
         Representation rep = new Representation();
-        Graph partTree = embedding.getPartGraph();
+        IntGraph partTree = embedding.getPartGraph();
 //        System.out.println("B=" + embedding.getBlockParts() + 
 //                           " T= " + embedding.getTreeParts() + " " + 
 //                           " BT= " + partTree);
@@ -45,14 +45,14 @@ public class GraphLayout {
     }
     
     private void layout(GraphEmbedding embedding, Representation rep,
-                        Graph partTree, int partIndex, int parentIndex, Vertex articulationVertex,
+                        IntGraph partTree, int partIndex, int parentIndex, Vertex articulationVertex,
                         Point2D partCenter, BitSet laidOut, Rectangle2D canvas) {
         Block part = embedding.getPart(partIndex);
         Point2D p = rep.getPoint(articulationVertex);
         boolean isTreePart = embedding.isTreePart(partIndex); 
         if (isTreePart) {
             RadialTreeLayout layout = new RadialTreeLayout(params);
-            Graph g = part.asGraph();
+            IntGraph g = part.asGraph();
             if (articulationVertex == null) {
                 // XXX - can't we have layout(g, p)?
                 double x = partCenter.getX();

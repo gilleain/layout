@@ -1,6 +1,6 @@
 package macrocycle;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -13,7 +13,7 @@ public class SquareLattice implements Lattice {
     
     private List<Line2D> latticeLines;
     
-    private Graph latticeGraph;
+    private IntGraph latticeGraph;
     
     private int currentWidthInSquares;
     
@@ -24,7 +24,7 @@ public class SquareLattice implements Lattice {
     public SquareLattice(int widthInSquares, int heightInSquares, double r) {
         latticePoints = new ArrayList<Point2D>();
         latticeLines = new ArrayList<Line2D>();
-        latticeGraph = new Graph();
+        latticeGraph = new IntGraph();
         this.r = r;
         
         make(widthInSquares, heightInSquares, r, 0, 0, latticeGraph, latticePoints, latticeLines);
@@ -34,7 +34,7 @@ public class SquareLattice implements Lattice {
         currentHeightInSquares = heightInSquares;
     }
     
-    public SquareLattice(List<Point2D> latticePoints, List<Line2D> latticeLines, Graph graph) {
+    public SquareLattice(List<Point2D> latticePoints, List<Line2D> latticeLines, IntGraph graph) {
         this.latticePoints = latticePoints;
         this.latticeLines = latticeLines;
         this.latticeGraph = graph;
@@ -42,7 +42,7 @@ public class SquareLattice implements Lattice {
     
     private void make(int widthInSquares, int heightInSquares, 
                       double r, double xStart, double yStart,
-                      Graph graph, List<Point2D> latticePoints, List<Line2D> latticeLines) {
+                      IntGraph graph, List<Point2D> latticePoints, List<Line2D> latticeLines) {
         double x = xStart;
         double y = yStart;
         int pointIndex = 0;
@@ -77,7 +77,7 @@ public class SquareLattice implements Lattice {
         return currentHeightInSquares;
     }
     
-    private void makeEdge(int a, int b, Graph graph, List<Point2D> points, List<Line2D> lines) {
+    private void makeEdge(int a, int b, IntGraph graph, List<Point2D> points, List<Line2D> lines) {
         graph.makeEdge(a, b);
         lines.add(new Line2D.Double(points.get(a), points.get(b)));
     }
@@ -93,13 +93,13 @@ public class SquareLattice implements Lattice {
     public Lattice getDual() {
         List<Point2D> dualPoints = new ArrayList<Point2D>();
         List<Line2D> dualLines = new ArrayList<Line2D>();
-        Graph dualGraph = new Graph();
+        IntGraph dualGraph = new IntGraph();
         make(currentWidthInSquares - 1, currentHeightInSquares - 1, r, r / 2, r / 2, 
              dualGraph, dualPoints, dualLines);
         return new SquareLattice(dualPoints, dualLines, dualGraph);
     }
     
-    public Graph getGraph() {
+    public IntGraph getGraph() {
         return latticeGraph;
     }
     

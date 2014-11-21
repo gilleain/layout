@@ -1,7 +1,7 @@
 package test.planar;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class DrawingTest extends AbstractDrawingTest {
 
 	@Test
 	public void sixCycleTest() throws IOException {
-		Graph graph = new Graph(); 
+		IntGraph graph = new IntGraph(); 
 		graph.makeMultipleEdges(0, 1, 5);
 		graph.makeMultipleEdges(1, 2);
 		graph.makeMultipleEdges(2, 3);
@@ -35,7 +35,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void sixPrismTest() throws IOException {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block block = new Block(12);
 		graph.makeMultipleEdges(0, 1, 5, 6);
 		graph.makeMultipleEdges(1, 2, 7);
@@ -58,7 +58,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void edgeBridgeTest() throws IOException {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block block = new Block(7);
 		graph.makeMultipleEdges(0, 1, 4);
 		graph.makeMultipleEdges(1, 2, 4, 6);
@@ -76,7 +76,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void edgeBridge2Test() throws IOException {
-		Graph graph = new Graph(); // don't really need this
+		IntGraph graph = new IntGraph(); // don't really need this
 		Block block = new Block(7);
 		graph.makeMultipleEdges(0, 1, 4);
 		graph.makeMultipleEdges(1, 2, 4, 5);
@@ -92,7 +92,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void sixDoublePrismTest() throws IOException {
-		Graph graph = new Graph(); 
+		IntGraph graph = new IntGraph(); 
 		graph.makeMultipleEdges(0, 1, 5, 6);
 		graph.makeMultipleEdges(1, 2, 7);
 		graph.makeMultipleEdges(2, 3, 8);
@@ -119,7 +119,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp98_2345_3_7_1() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 7);
 		graph.makeMultipleEdges(1, 2, 9);
 		graph.makeMultipleEdges(2, 3, 13);
@@ -141,7 +141,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp98_2345_3_7_2() throws IOException {
-		Graph graph = new Graph(); 
+		IntGraph graph = new IntGraph(); 
 		graph.makeMultipleEdges(0, 1, 7, 9);
 		graph.makeMultipleEdges(1, 2);
 		graph.makeMultipleEdges(2, 3, 10);
@@ -164,7 +164,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp98_2345_3_7_3() throws IOException {
-		Graph graph = new Graph(); 
+		IntGraph graph = new IntGraph(); 
 		graph.makeMultipleEdges(0, 1, 8, 9);
 		graph.makeMultipleEdges(1, 2);
 		graph.makeMultipleEdges(2, 3, 10);
@@ -188,7 +188,7 @@ public class DrawingTest extends AbstractDrawingTest {
 
 	@Test
 	public void gcg_pp98_2345_3_7_4() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 8);
 		graph.makeMultipleEdges(1, 2, 9);
 		graph.makeMultipleEdges(2, 3, 10);
@@ -212,7 +212,7 @@ public class DrawingTest extends AbstractDrawingTest {
 
 	@Test
 	public void gcg_pp98_2345_3_7_5() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 9, 10);
 		graph.makeMultipleEdges(1, 2);
 		graph.makeMultipleEdges(2, 3, 11);
@@ -237,7 +237,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp98_2345_3_7_6() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 6);
 		graph.makeMultipleEdges(1, 2, 8);
 		graph.makeMultipleEdges(2, 3, 9);
@@ -260,7 +260,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp98_2345_3_7_9() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 7, 8);
 		graph.makeMultipleEdges(1, 2);
 		graph.makeMultipleEdges(2, 3, 9);
@@ -283,7 +283,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void gcg_pp101_2345_3_10_7() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 5, 6);
 		graph.makeMultipleEdges(1, 2, 7);
 		graph.makeMultipleEdges(2, 3, 8);
@@ -310,7 +310,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void herschelGraph() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 3, 4);
 		graph.makeMultipleEdges(1, 2, 5);
 		graph.makeMultipleEdges(2, 3, 6, 7);
@@ -330,7 +330,7 @@ public class DrawingTest extends AbstractDrawingTest {
 	
 	@Test
 	public void icosohedralGraph() throws IOException {
-		Graph graph = new Graph();
+		IntGraph graph = new IntGraph();
 		graph.makeMultipleEdges(0, 1, 4, 5);
 		graph.makeMultipleEdges(1, 2, 6);
 		graph.makeMultipleEdges(2, 3, 7);

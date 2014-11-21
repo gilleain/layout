@@ -1,6 +1,6 @@
 package planar;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import java.util.List;
  */
 public class DualFinder {
     
-    public static Graph getDual(BlockEmbedding e) {
-        Graph dual = new Graph();
+    public static IntGraph getDual(BlockEmbedding e) {
+        IntGraph dual = new IntGraph();
         List<Face> faces = e.getFaces();
         for (int i = 0; i < faces.size(); i++) {
             Face faceI = faces.get(i);

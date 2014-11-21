@@ -1,6 +1,6 @@
 package macrocycle;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -14,6 +14,6 @@ public interface Lattice {
     
     public Lattice getDual();
     
-    public Graph getGraph();
+    public IntGraph getGraph();
     
 }

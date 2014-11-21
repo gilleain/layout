@@ -3,7 +3,7 @@ package test.macrocycle;
 import graph.model.Block;
 import graph.model.CycleFinder;
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphSignature;
 import graph.model.SpanningTree;
 import graph.model.Vertex;
@@ -93,7 +93,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
     public Representation getCycleRepr(HexLattice lattice, Block cycle) {
         List<Point2D> points = lattice.getPointList();
         List<Line2D> lines   = lattice.getLineList();
-        Graph graph = lattice.getGraph();
+        IntGraph graph = lattice.getGraph();
         
         Representation rep = new Representation();
         for (int vertexIndex = 0; vertexIndex < cycle.vsize(); vertexIndex++) {
@@ -114,7 +114,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
     public Representation getCycleAsFusaneRepr(HexLattice lattice, Block cycle) {
         List<Point2D> points = lattice.getPointList();
         List<Line2D> lines   = lattice.getLineList();
-        Graph graph = lattice.getGraph();
+        IntGraph graph = lattice.getGraph();
         
         Representation rep = new Representation();
         for (int vertexIndex = 0; vertexIndex < cycle.vsize(); vertexIndex++) {
@@ -155,7 +155,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
     }
     
     public Map<Integer, List<Block>> getCycles(HexLattice lattice) {
-        Graph graph = lattice.getGraph();
+        IntGraph graph = lattice.getGraph();
         Map<Integer, List<Block>> hist = new HashMap<Integer, List<Block>>();
         for (Block cycle : CycleFinder.findAll(new Block(graph))) {
             if (cycle.vsize() == 0) continue;
@@ -178,7 +178,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
     
     public Block fillOut(HexLattice lattice, Block cycle) {
         List<Point2D> points = lattice.getPointList();
-        Graph graph = lattice.getGraph();
+        IntGraph graph = lattice.getGraph();
         
         Block rep = new Block(cycle);
         if (cycle.vsize() != cycle.esize()) {
@@ -238,7 +238,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
             
             BlockEmbedding embedding = null;
             try {
-                embedding = PlanarBlockEmbedder.embedInCycle(new Block(cycle), rep, new Graph());
+                embedding = PlanarBlockEmbedder.embedInCycle(new Block(cycle), rep, new IntGraph());
             } catch (NullPointerException npe) {
                 try {
                     int id = Math.abs(cycle.toString().hashCode());
@@ -255,7 +255,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
 //                        + " E = " + rep.esize()
 //                        + " F = " + embedding.getFaces().size() 
 //                        + " " + rep);
-                Graph dual = DualFinder.getDual(embedding);
+                IntGraph dual = DualFinder.getDual(embedding);
                 String sig = new GraphSignature(dual).toCanonicalString();
                 if (!representatives.containsKey(sig)) {
 //                    representatives.put(sig, rep);
@@ -382,7 +382,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         double r = 50;
         TriangleLattice tri = new TriangleLattice(triWidth, triHeight, r);
         HexLattice dual = tri.getDual();
-        Graph g = dual.getGraph();
+        IntGraph g = dual.getGraph();
         Block graph = new Block(g);
         List<Block> basis = CycleFinder.getCycleBasis(new SpanningTree(graph));
         
@@ -416,7 +416,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         double r = 50;
         TriangleLattice tri = new TriangleLattice(triWidth, triHeight, r);
         HexLattice dual = tri.getDual();
-        Block cycleA = new Block(new Graph("8:9, 9:10, 10:11, 11:12, 14:15, 8:15, 12:19, 19:20, 14:21, 21:22, 22:23, 23:24, 24:25, 25:26, 26:27, 20:27"));
+        Block cycleA = new Block(new IntGraph("8:9, 9:10, 10:11, 11:12, 14:15, 8:15, 12:19, 19:20, 14:21, 21:22, 22:23, 23:24, 24:25, 25:26, 26:27, 20:27"));
         Block full = fillOut(dual, cycleA);
         try {
             draw(full, dual, getParams(), "tmp.png");
@@ -427,13 +427,13 @@ public class HexLatticeCyclesTest extends LatticeTest {
         System.out.println(full);
         BlockEmbedding embedding = null;
         try {
-            embedding = PlanarBlockEmbedder.embedInCycle(new Block(cycleA), full, new Graph());
+            embedding = PlanarBlockEmbedder.embedInCycle(new Block(cycleA), full, new IntGraph());
         } catch (NullPointerException npe) {
             System.out.println(npe);
         }
         
         if (embedding != null) {
-          Graph innerDual = DualFinder.getDual(embedding);
+          IntGraph innerDual = DualFinder.getDual(embedding);
           String sig = new GraphSignature(innerDual).toCanonicalString();
           System.out.println(sig);
         } else {
@@ -491,7 +491,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         double r = 50;
         TriangleLattice tri = new TriangleLattice(triWidth, triHeight, r);
         HexLattice dual = tri.getDual();
-        Graph g = dual.getGraph();
+        IntGraph g = dual.getGraph();
         Block graph = new Block(g);
 //        List<Block> basis = CycleFinder.getCycleBasis(new SpanningTree(graph));
         

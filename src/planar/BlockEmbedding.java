@@ -1,7 +1,7 @@
 package planar;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Path;
 import graph.model.Vertex;
 
@@ -22,7 +22,7 @@ public class BlockEmbedding {
 	/**
 	 * The underlying graph.
 	 */
-	private Graph graph;
+	private IntGraph graph;
 	
 	/**
 	 * The block that this embedding is of...
@@ -50,14 +50,14 @@ public class BlockEmbedding {
 	 */
 	private List<DualEdge> dualEdges;
 	
-	public BlockEmbedding(Graph graph) {
+	public BlockEmbedding(IntGraph graph) {
 		this.graph = graph;
 		combinatorialMap = new HashMap<Vertex, List<Vertex>>();
 		faces = new ArrayList<Face>();
 		dualEdges = new ArrayList<DualEdge>();
 	}
 	
-	public BlockEmbedding(Graph graph, Block circuit) {
+	public BlockEmbedding(IntGraph graph, Block circuit) {
 		this(graph);
 		
 		// this is wrong : if bridges are embedded in external face, this changes 
@@ -162,7 +162,7 @@ public class BlockEmbedding {
 		return combinatorialMap;
 	}
 	
-	public Graph getGraph() {
+	public IntGraph getGraph() {
 		return graph;
 	}
 

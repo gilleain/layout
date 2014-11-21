@@ -1,6 +1,6 @@
 package test.planar;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 
 import java.awt.Color;
@@ -26,7 +26,7 @@ public class GeneratedGraphsTest {
 		if (!outDir.exists()) { outDir.mkdir(); }
 		
 		int i = 0;
-		for (Graph graph : GraphFileReader.readAll(inputDir)) {
+		for (IntGraph graph : GraphFileReader.readAll(inputDir)) {
 			BlockEmbedding em = null;
 			try {
 				em = PlanarBlockEmbedder.embed(graph);

@@ -1,7 +1,7 @@
 package chiral;
 
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
@@ -31,7 +31,7 @@ public class RadialTreeLayout extends AbstractLayout implements ChiralLayout {
         this.params = params;
     }
 
-    public Representation layout(Graph tree, CombinatorialMap cm, Rectangle2D canvas) {
+    public Representation layout(IntGraph tree, CombinatorialMap cm, Rectangle2D canvas) {
         Representation representation = new Representation();
         Point2D centerPoint = new Point2D.Double(canvas.getCenterX(), canvas.getCenterY());
         List<Integer> centerIndices = TreeCenterFinder.findCenter(tree);
@@ -57,7 +57,7 @@ public class RadialTreeLayout extends AbstractLayout implements ChiralLayout {
      * @param representation the representation to fill
      */
     public void layout(
-            Graph tree, CombinatorialMap cm,  Vertex pV, Vertex pA, Vertex pB, Representation representation) {
+            IntGraph tree, CombinatorialMap cm,  Vertex pV, Vertex pA, Vertex pB, Representation representation) {
         int index = pV.getIndex();
         
         Point2D ppV = representation.getPoint(pV);
@@ -97,14 +97,14 @@ public class RadialTreeLayout extends AbstractLayout implements ChiralLayout {
         }
     }
     
-    private void layout(Graph tree,  CombinatorialMap cm, int index, int parentIndex, Point2D point, Representation rep) {
+    private void layout(IntGraph tree,  CombinatorialMap cm, int index, int parentIndex, Point2D point, Representation rep) {
         Vertex vertex = new Vertex(index);
         rep.addPoint(vertex, point);
         placeConnected(tree, cm, vertex, index, parentIndex, point, rep);
     }
     
     private void placeConnected(
-            Graph tree,  CombinatorialMap cm, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
+            IntGraph tree,  CombinatorialMap cm, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
         List<Integer> neighbours = tree.getConnected(index);
         // TODO : this test does nothing!
         int unplacedNeighbours = (parentIndex == -1)? neighbours.size() : neighbours.size();
@@ -143,7 +143,7 @@ public class RadialTreeLayout extends AbstractLayout implements ChiralLayout {
         return new Point2D.Double(x, y);
     }
 
-    private void layoutFromCenterPair(Graph tree,  CombinatorialMap cm, 
+    private void layoutFromCenterPair(IntGraph tree,  CombinatorialMap cm, 
                                       int centerIndexA, int centerIndexB, 
                                       Point2D centerPoint, Representation rep) {
         double edgeLen = params.get("edgeLength");

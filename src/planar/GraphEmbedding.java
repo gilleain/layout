@@ -1,7 +1,7 @@
 package planar;
 
 import graph.model.Block;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ public class GraphEmbedding {
         return cm;
     }
     
-    public Graph getPartGraph() {
-        Graph partGraph = new Graph();
+    public IntGraph getPartGraph() {
+        IntGraph partGraph = new IntGraph();
         int b = blockEmbeddings.size();
         int t = trees.size(); 
         for (int blockIndexI = 0; blockIndexI < b; blockIndexI++) {

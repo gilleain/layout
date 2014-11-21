@@ -1,7 +1,7 @@
 package layout;
 
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 
 import java.awt.geom.Line2D;
@@ -27,7 +27,7 @@ public class CircleLayout implements SimpleLayout {
 		this.params = params;
 	}
 	
-	public Representation layout(Graph graph, Rectangle2D canvas) {
+	public Representation layout(IntGraph graph, Rectangle2D canvas) {
 		Representation repr = new Representation();
 		double border = params.get("border");
 		double w = canvas.getWidth();

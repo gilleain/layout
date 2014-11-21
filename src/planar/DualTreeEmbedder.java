@@ -3,7 +3,7 @@ package planar;
 import graph.model.Block;
 import graph.model.CycleFinder;
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Path;
 
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class DualTreeEmbedder {
 	
-    public static BlockEmbedding embed(Graph graph) {
+    public static BlockEmbedding embed(IntGraph graph) {
         return embed(graph, CycleFinder.getMaxCycle(new Block(graph)));
     }
     
-	public static BlockEmbedding embed(Graph graph, Block outerCycle) {
+	public static BlockEmbedding embed(IntGraph graph, Block outerCycle) {
 //	    System.out.println("Outer cycle " + outerCycle);
 		BlockEmbedding embedding = new BlockEmbedding(graph, outerCycle);
 		Block b = new Block(graph);    // ugh! re-creating block-graph here

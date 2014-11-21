@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 
 import java.awt.Color;
@@ -33,7 +33,7 @@ public class CircleAdjacentPointTest extends BaseDrawTest {
         int h = 400;
         int cw = 200;
         int ch = 200;
-        Graph circle = new Graph("0:1,1:2,2:3,3:4,4:5,5:6,6:0");
+        IntGraph circle = new IntGraph("0:1,1:2,2:3,3:4,4:5,5:6,6:0");
         ConcentricCircularLayout layout = new ConcentricCircularLayout();
         BlockEmbedding em = PlanarBlockEmbedder.embed(circle);
         Representation rep = layout.layout(em, new Rectangle2D.Double(cw / 2, ch / 2, cw, ch));

@@ -1,7 +1,7 @@
 package layout;
 
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.Vertex;
 import graph.tree.TreeCenterFinder;
 
@@ -30,7 +30,7 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
         this.params = params;
     }
 
-    public Representation layout(Graph tree, Rectangle2D canvas) {
+    public Representation layout(IntGraph tree, Rectangle2D canvas) {
         Representation representation = new Representation();
         Point2D centerPoint = new Point2D.Double(canvas.getCenterX(), canvas.getCenterY());
         List<Integer> centerIndices = TreeCenterFinder.findCenter(tree);
@@ -55,7 +55,7 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
      * @param pB a placed vertex attached to pV
      * @param representation the representation to fill
      */
-    public void layout(Graph tree, Vertex pV, Vertex pA, Vertex pB, Representation representation) {
+    public void layout(IntGraph tree, Vertex pV, Vertex pA, Vertex pB, Representation representation) {
         int index = pV.getIndex();
         
         Point2D ppV = representation.getPoint(pV);
@@ -95,14 +95,14 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
         }
     }
 
-    private void layout(Graph tree, int index, int parentIndex, Point2D point, Representation rep) {
+    private void layout(IntGraph tree, int index, int parentIndex, Point2D point, Representation rep) {
         Vertex vertex = new Vertex(index);
         rep.addPoint(vertex, point);
         placeConnected(tree, vertex, index, parentIndex, point, rep);
     }
     
     private void placeConnected(
-            Graph tree, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
+            IntGraph tree, Vertex vertex, int index, int parentIndex, Point2D point, Representation rep) {
         List<Integer> neighbours = tree.getConnected(index);
         int unplacedNeighbours = (parentIndex == -1)? neighbours.size() : neighbours.size();
         int n = Math.max(MIN_NEIGHBOURS, unplacedNeighbours);
@@ -141,7 +141,7 @@ public class RadialTreeLayout extends AbstractLayout implements SimpleLayout {
     }
     
     private void layoutFromCenterPair(
-            Graph tree, int centerIndexA, int centerIndexB, Point2D centerPoint, Representation rep) {
+            IntGraph tree, int centerIndexA, int centerIndexB, Point2D centerPoint, Representation rep) {
         double edgeLen = params.get("edgeLength");
         
         double centerX = centerPoint.getX();

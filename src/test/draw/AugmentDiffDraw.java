@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 
 import java.awt.Color;
@@ -29,7 +29,7 @@ public class AugmentDiffDraw extends BaseDrawTest {
     
     public static final String OUT_DIR = "output/diff/img";
     
-    public void drawGraph(Graph g, int w, int h, int edgeLen, boolean drawNumbers, String subdir, String filename) throws IOException {
+    public void drawGraph(IntGraph g, int w, int h, int edgeLen, boolean drawNumbers, String subdir, String filename) throws IOException {
         GraphEmbedding ge = GraphEmbedder.embed(g);
         ParameterSet params = new ParameterSet();
         params.set("edgeLength", edgeLen);
@@ -54,7 +54,7 @@ public class AugmentDiffDraw extends BaseDrawTest {
     public void drawFile(String inputFilename, int w, int h, String prefix, int limit) throws IOException {
         GraphFileReader graphs = new GraphFileReader(new FileReader(new File(IN_DIR, inputFilename)), 1);
         int counter = 0;
-        for (Graph g : graphs) {
+        for (IntGraph g : graphs) {
             try {
                 drawGraph(g, w, h, 30, true, prefix, prefix + "_" + counter + ".png");
                 System.out.println("done " + counter + "\t" + g);
@@ -73,7 +73,7 @@ public class AugmentDiffDraw extends BaseDrawTest {
     
     @Test
     public void drawNine11() throws IOException {
-        drawGraph(new Graph("0:3, 0:4, 0:6, 0:8, 1:4, 1:5, 1:6, 1:7, 2:5, 2:6, 2:7, 2:8, 3:5, 3:6, 3:7, 4:7, 4:8, 5:8"), 400, 400, 50, true, "misc", "nineEleven");
+        drawGraph(new IntGraph("0:3, 0:4, 0:6, 0:8, 1:4, 1:5, 1:6, 1:7, 2:5, 2:6, 2:7, 2:8, 3:5, 3:6, 3:7, 4:7, 4:8, 5:8"), 400, 400, 50, true, "misc", "nineEleven");
     }
     
     @Test

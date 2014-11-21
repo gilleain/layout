@@ -1,6 +1,6 @@
 package test.draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphFileReader;
 
 import java.awt.Graphics2D;
@@ -22,7 +22,7 @@ import draw.Representation;
 
 public class CircleLayoutTest extends BaseDrawTest {
 	
-	public void draw(Graph graph, int w, int h, String filename) throws IOException {
+	public void draw(IntGraph graph, int w, int h, String filename) throws IOException {
 		ParameterSet params = new ParameterSet();
 		params.set("border", 10);
 		params.set("pointRadius", 3);
@@ -38,7 +38,7 @@ public class CircleLayoutTest extends BaseDrawTest {
 		int w = 300;
 		int h = 300;
 //		Graph graph = new Graph("[0:1, 0:2, 0:3, 10:11, 1:2, 1:4, 2:8, 3:5, 3:7, 4:10, 4:6, 5:6, 5:9, 6:7, 7:11, 8:11, 8:9, 9:10]");
-		Graph graph = new Graph("[0:1, 0:2, 0:4, 10:11, 1:10, 1:3, 2:11, 2:3, 3:5, 4:5, 4:6, 5:7, 6:8, 6:9, 7:8, 7:9, 8:10, 9:11]");
+		IntGraph graph = new IntGraph("[0:1, 0:2, 0:4, 10:11, 1:10, 1:3, 2:11, 2:3, 3:5, 4:5, 4:6, 5:7, 6:8, 6:9, 7:8, 7:9, 8:10, 9:11]");
 		draw(graph, w, h, "tmp.png");
 	}
 	
@@ -48,7 +48,7 @@ public class CircleLayoutTest extends BaseDrawTest {
 		int h = 200;
 		String filename = "output/degree_threes/ten_threes.txt";
 		int index = 0;
-		for (Graph g : new GraphFileReader(new FileReader(filename))) {
+		for (IntGraph g : new GraphFileReader(new FileReader(filename))) {
 			draw(g, w, h, "output/img/g_" + index + ".png");
 			index++;
 		}

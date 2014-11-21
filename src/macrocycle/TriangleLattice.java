@@ -1,6 +1,6 @@
 package macrocycle;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
@@ -15,7 +15,7 @@ public class TriangleLattice implements Lattice {
     
     private List<Line2D> latticeLines;
     
-    private Graph latticeGraph;
+    private IntGraph latticeGraph;
     
     private int currentWidthInTri;
     
@@ -25,7 +25,7 @@ public class TriangleLattice implements Lattice {
         this.s = s;
         latticePoints = new ArrayList<Point2D>();
         latticeLines = new ArrayList<Line2D>();
-        latticeGraph = new Graph();
+        latticeGraph = new IntGraph();
         
         double hS = s / 2;
         double x = 0;
@@ -78,7 +78,7 @@ public class TriangleLattice implements Lattice {
     private HexLattice makeDual(int widthInTriangles, int heightInTriangles) {
         List<Point2D> dualPoints = new ArrayList<Point2D>();
         List<Line2D> dualLines = new ArrayList<Line2D>();
-        Graph dualGraph = new Graph();
+        IntGraph dualGraph = new IntGraph();
         int halfWidth = (widthInTriangles + 1) / 2;
         int triangleIndex = 0;
         int pointIndex = halfWidth;
@@ -133,7 +133,7 @@ public class TriangleLattice implements Lattice {
         return new HexLattice(dualPoints, dualLines, dualGraph);
     }
     
-    private void makeLine(int a, int b, List<Point2D> points, List<Line2D> lines, Graph graph) {
+    private void makeLine(int a, int b, List<Point2D> points, List<Line2D> lines, IntGraph graph) {
         graph.makeEdge(a, b);
         lines.add(new Line2D.Double(points.get(a), points.get(b)));
     }
@@ -173,7 +173,7 @@ public class TriangleLattice implements Lattice {
         return latticeLines;
     }
     
-    public Graph getGraph() {
+    public IntGraph getGraph() {
         return latticeGraph;
     }
     

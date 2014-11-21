@@ -1,6 +1,6 @@
 package draw;
 
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphSignature;
 import graph.model.Vertex;
 
@@ -16,7 +16,7 @@ import signature.SymmetryClass;
 public class SignatureColorer extends AbstractColorer {
 
 	public Map<Vertex, Color> getColors(BlockEmbedding embedding) {
-		Graph graph = embedding.getGraph();
+		IntGraph graph = embedding.getGraph();
 		GraphSignature signature = new GraphSignature(graph);
 		List<SymmetryClass> symmetryClasses = signature.getSymmetryClasses();
 		tmp_print(symmetryClasses);

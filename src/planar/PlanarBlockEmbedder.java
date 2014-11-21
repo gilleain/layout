@@ -3,7 +3,7 @@ package planar;
 import graph.model.Block;
 import graph.model.CycleFinder;
 import graph.model.Edge;
-import graph.model.Graph;
+import graph.model.IntGraph;
 import graph.model.GraphObject;
 import graph.model.Path;
 import graph.model.SpanningTree;
@@ -31,7 +31,7 @@ public class PlanarBlockEmbedder {
      * @param atomContainer
      * @return
      */
-    public static BlockEmbedding embed(Graph g) {
+    public static BlockEmbedding embed(IntGraph g) {
         return embed(new Block(g), g);
     }
 
@@ -42,7 +42,7 @@ public class PlanarBlockEmbedder {
      * @param atomContainer
      * @return
      */
-    public static BlockEmbedding embed(Block blockToEmbed, Graph g) {
+    public static BlockEmbedding embed(Block blockToEmbed, IntGraph g) {
 //         System.out.println("embedding block");
         // find a circuit of G
 //        List<Block> cycles = CycleFinder.findAll(blockToEmbed);
@@ -73,7 +73,7 @@ public class PlanarBlockEmbedder {
      * @return
      */
     public static BlockEmbedding embedInCycle(
-            Block circuit, Block blockToEmbed, Graph g) {
+            Block circuit, Block blockToEmbed, IntGraph g) {
         Block currentBlock = circuit;
 
         // make an embedding of the circuit
