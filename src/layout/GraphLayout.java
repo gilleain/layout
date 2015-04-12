@@ -176,7 +176,7 @@ public class GraphLayout {
     }
 
     private double getRadiusForBlock(int blockIndex, GraphEmbedding embedding) {
-        int outerCycleSize = embedding.getBlockEmbedding(blockIndex).getExternalFace().vsize();
+        int outerCycleSize = embedding.getBlockEmbedding(blockIndex).getExternalFace().getVertexCount();
         double edgeLen = params.get("edgeLength");
         return edgeLen / Math.sin(Math.toRadians(360 / (2 * outerCycleSize)));
     }

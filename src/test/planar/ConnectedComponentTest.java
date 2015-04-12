@@ -17,11 +17,11 @@ public class ConnectedComponentTest {
 		ConnectedComponentFinder ccF = new ConnectedComponentFinder(); 
 		g.accept(ccF);
 		System.out.println("C = " + ccF.getComponents());
-		VertexGraph union = new VertexGraph(g.vsize());
+		VertexGraph union = new VertexGraph(g.getVertexCount());
 		int count = 0;
 		for (Block b : ccF.getComponents()) {
 			System.out.println("b" + count + " = " + b);
-			for (int i = 0; i < g.vsize(); i++) {
+			for (int i = 0; i < g.getVertexCount(); i++) {
 				Vertex v = g.getVertex(i);
 				for (Vertex w : b.getConnected(v)) {
 					if (union.hasEdge(v, w)) {

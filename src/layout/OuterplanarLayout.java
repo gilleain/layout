@@ -77,7 +77,7 @@ public class OuterplanarLayout implements Layout {
 	            double angleA = angle(nextCenter, pA);
 	            double angleB = angle(nextCenter, pB);
 	            double nextStartAngle;
-	            double alpha = getAlpha(neighbourFace.vsize());
+	            double alpha = getAlpha(neighbourFace.getVertexCount());
 	            int nextStartVertexIndex;
 	            int nextEndVertexIndex;
 	            if (antiClockwiseOrderedInFace(vA, vB, neighbourFace)) {
@@ -89,7 +89,7 @@ public class OuterplanarLayout implements Layout {
 	                nextStartVertexIndex = neighbourFace.indexOf(vA);
 	                nextEndVertexIndex = neighbourFace.indexOf(vB);
 	            }
-	            nextStartVertexIndex = (nextStartVertexIndex == neighbourFace.vsize() - 1)? 0 : nextStartVertexIndex + 1;
+	            nextStartVertexIndex = (nextStartVertexIndex == neighbourFace.getVertexCount() - 1)? 0 : nextStartVertexIndex + 1;
 //	            System.out.println("angleB " + toAStr(angleB) + " + alpha " + toAStr(alpha) + " = " + toAStr(nextStartAngle));
 //	            System.out.println("angleA " + toAStr(angleA) + " - alpha " + toAStr(alpha) + " = " + toAStr(nextStartAngle));
 	            if (nextStartAngle <= 0.0) {
@@ -110,7 +110,7 @@ public class OuterplanarLayout implements Layout {
 	    int cyclicIndex = 0;
 	    boolean seenA = false;
 //	    System.out.println("checking order of " + a + " and " + b + " in " + face);
-	    for (int counter = 0; counter < face.vsize(); counter++) {
+	    for (int counter = 0; counter < face.getVertexCount(); counter++) {
 	        Vertex v = face.getVertex(cyclicIndex);
 	        if (seenA) {
 	            if (v.equals(b)) {
@@ -126,7 +126,7 @@ public class OuterplanarLayout implements Layout {
 	                return false;
 	            }
 	        }
-	        if (cyclicIndex == face.vsize() - 1) {
+	        if (cyclicIndex == face.getVertexCount() - 1) {
 	            cyclicIndex = 0;
 	        } else {
 	            cyclicIndex++;
@@ -177,7 +177,7 @@ public class OuterplanarLayout implements Layout {
         double angleA = angle(centerB, pA);
         double angleB = angle(centerB, pB);
         double nextStartAngle;
-        double alpha = getAlpha(faceB.vsize());
+        double alpha = getAlpha(faceB.getVertexCount());
         int nextStartVertexIndex;
         int nextEndVertexIndex;
         if (antiClockwiseOrderedInFace(vA, vB, faceB)) {
@@ -190,7 +190,7 @@ public class OuterplanarLayout implements Layout {
             nextEndVertexIndex = faceB.indexOf(vB);
         }
         // starting at the vertex after the shared edge
-        nextStartVertexIndex = (nextStartVertexIndex == faceB.vsize() - 1)? 0 : nextStartVertexIndex + 1;
+        nextStartVertexIndex = (nextStartVertexIndex == faceB.getVertexCount() - 1)? 0 : nextStartVertexIndex + 1;
 //        System.out.println("angleB " + toAStr(angleB) + " + alpha " + toAStr(alpha) + " = " + toAStr(nextStartAngle));
 //        System.out.println("angleA " + toAStr(angleA) + " - alpha " + toAStr(alpha) + " = " + toAStr(nextStartAngle));
         visited.clear(faceIndexB);   // now draw this subtree
@@ -203,15 +203,15 @@ public class OuterplanarLayout implements Layout {
 	
 	private void layoutFace(Face face, Point2D center, double startAngle, int startVertexIndex, int endVertexIndex, Representation representation) {
 //	    System.out.println("face " + face + " between " + face.getVertex(startVertexIndex) + " to " + face.getVertex(endVertexIndex));
-	    double alpha = getAlpha(face.vsize());
+	    double alpha = getAlpha(face.getVertexCount());
         
         double currentAngle = startAngle;
         double cx = center.getX();
         double cy = center.getY();
         Vertex prev = (startVertexIndex == 0)? 
-                face.getVertex(face.vsize() - 1) : face.getVertex(startVertexIndex - 1);
+                face.getVertex(face.getVertexCount() - 1) : face.getVertex(startVertexIndex - 1);
         int cyclicIndex = startVertexIndex;
-        for (int counter = 0; counter < face.vsize(); counter++) {
+        for (int counter = 0; counter < face.getVertexCount(); counter++) {
             Vertex vertex = face.getVertex(cyclicIndex);
             Point2D p;
             boolean isNew = false;
@@ -241,13 +241,13 @@ public class OuterplanarLayout implements Layout {
                 currentAngle += 2 * Math.PI;
             }
             prev = vertex;
-            if (cyclicIndex == face.vsize() - 1) {
+            if (cyclicIndex == face.getVertexCount() - 1) {
                 cyclicIndex = 0;
             } else {
                 cyclicIndex++;
             }
         }
-        int lastIndex = (endVertexIndex == 0)? face.vsize() - 1 : endVertexIndex - 1;
+        int lastIndex = (endVertexIndex == 0)? face.getVertexCount() - 1 : endVertexIndex - 1;
         Vertex closingVertexA = face.getVertex(lastIndex);
         Vertex closingVertexB = face.getVertex(endVertexIndex);
         Point2D pX = representation.getPoint(closingVertexA);

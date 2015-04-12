@@ -46,7 +46,7 @@ public class Face extends VertexGraph {
 		// look for the edge containing the start (assumes edges are cyclically ordered)
 		Edge currentEdge = null;
 		int edgeIndex;
-		for (edgeIndex = 0; edgeIndex < esize(); edgeIndex++) {
+		for (edgeIndex = 0; edgeIndex < getEdgeCount(); edgeIndex++) {
 			Edge e = edges.get(edgeIndex);
 			if (e.getA().equals(start)) {	// implicitly assuming a directed edge from A->B
 				currentEdge = e;
@@ -60,9 +60,9 @@ public class Face extends VertexGraph {
 		face.add(start, currentVertex);
 		
 		// now run through the edges in order
-		while (!currentVertex.equals(end) && face.esize() < esize()) {
+		while (!currentVertex.equals(end) && face.getEdgeCount() < getEdgeCount()) {
 //			System.out.println("currentV = " + currentVertex);
-			if (edgeIndex == esize() - 1) {
+			if (edgeIndex == getEdgeCount() - 1) {
 				edgeIndex = 0;
 			} else {
 				edgeIndex++;
@@ -79,7 +79,7 @@ public class Face extends VertexGraph {
 		}
 		
 		// add the path into the face in reverse
-		for (int eIndex = path.esize() - 1; eIndex >= 0; eIndex--) {
+		for (int eIndex = path.getEdgeCount() - 1; eIndex >= 0; eIndex--) {
 			Edge pathEdge = path.getEdges().get(eIndex);
 			face.add(pathEdge.getB());
 			face.add(pathEdge.getA());
@@ -96,7 +96,7 @@ public class Face extends VertexGraph {
 		// look for the edge containing the end (assumes edges are cyclically ordered)
 		Edge currentEdge = null;
 		int edgeIndex;
-		for (edgeIndex = 0; edgeIndex < esize(); edgeIndex++) {
+		for (edgeIndex = 0; edgeIndex < getEdgeCount(); edgeIndex++) {
 			Edge e = edges.get(edgeIndex);
 			if (e.getA().equals(end)) {	// implicitly assuming a directed edge from A->B
 				currentEdge = e;
@@ -110,9 +110,9 @@ public class Face extends VertexGraph {
 		face.add(end, currentVertex);
 		
 		// now run through the edges in order
-		while (!currentVertex.equals(start) && face.esize() < esize()) {
+		while (!currentVertex.equals(start) && face.getEdgeCount() < getEdgeCount()) {
 //			System.out.println("currentV = " + currentVertex);
-			if (edgeIndex == esize() - 1) {
+			if (edgeIndex == getEdgeCount() - 1) {
 				edgeIndex = 0;
 			} else {
 				edgeIndex++;
@@ -129,7 +129,7 @@ public class Face extends VertexGraph {
 		}
 		
 		// add the path into the face
-		for (int eIndex = 0; eIndex < path.esize(); eIndex++) {
+		for (int eIndex = 0; eIndex < path.getEdgeCount(); eIndex++) {
 			Edge pathEdge = path.getEdges().get(eIndex);
 			face.add(pathEdge.getA());
 			face.add(pathEdge.getB());

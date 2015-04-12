@@ -80,7 +80,7 @@ public class PlanarBlockEmbedder {
         BlockEmbedding embedding = new BlockEmbedding(g, circuit);
 
         int faceCount = 1;
-        int eulerNumber = blockToEmbed.esize() - blockToEmbed.vsize() + 2;
+        int eulerNumber = blockToEmbed.getEdgeCount() - blockToEmbed.getVertexCount() + 2;
         boolean embeddable = true;
 
         while (faceCount != eulerNumber && embeddable) {
@@ -145,9 +145,9 @@ public class PlanarBlockEmbedder {
         List<Bridge> bridges = new ArrayList<Bridge>();
 
         // first, find isolated edges, and remove them from diff
-        for (int i = 0; i < subgraph.vsize(); i++) {
+        for (int i = 0; i < subgraph.getVertexCount(); i++) {
             Vertex vI = subgraph.getVertex(i);
-            for (int j = i + 1; j < subgraph.vsize(); j++) {
+            for (int j = i + 1; j < subgraph.getVertexCount(); j++) {
                 Vertex vJ = subgraph.getVertex(j);
                 Edge diffEdge = diff.getEdge(vI, vJ);
                 if (diffEdge != null && !subgraph.hasEdge(vI, vJ)) {

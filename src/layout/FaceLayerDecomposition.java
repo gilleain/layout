@@ -22,7 +22,7 @@ public class FaceLayerDecomposition {
     
     public FaceLayerDecomposition(BlockEmbedding embedding) {
         Block dual = embedding.calculateInnerDual();
-        int count = dual.vsize();
+        int count = dual.getVertexCount();
         faceLayers = new ArrayList<List<Integer>>();
         
         Face outerFace = embedding.getExternalFace();

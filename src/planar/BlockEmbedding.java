@@ -169,7 +169,7 @@ public class BlockEmbedding {
 	public void embedInOuterFace(Path path) {
 	    Path rev = path.reverse();
         Vertex start = rev.getVertex(0);
-        Vertex end   = rev.getVertex(rev.vsize() - 1);
+        Vertex end   = rev.getVertex(rev.getVertexCount() - 1);
         
         Face faceL = externalFace.getStartToEndFace(start, end, path);
         Face faceR = externalFace.getEndToStartFace(start, end, path);
@@ -192,7 +192,7 @@ public class BlockEmbedding {
 		
 		// split the face in two by adding the path
 		Vertex start = path.getVertex(0);
-		Vertex end   = path.getVertex(path.vsize() - 1);
+		Vertex end   = path.getVertex(path.getVertexCount() - 1);
 		
 		Face faceL = face.getStartToEndFace(start, end, path);
 //		System.out.println("face L = " + faceL);
@@ -209,7 +209,7 @@ public class BlockEmbedding {
 	
 	private void embed(Path path, Vertex start, Vertex end) {
 		Vertex startPartner = path.getEdges().get(0).getB();
-		Vertex endPartner   = path.getEdges().get(path.esize() - 1).getA();
+		Vertex endPartner   = path.getEdges().get(path.getEdgeCount() - 1).getA();
 		
 		// start vertex
 		if (!combinatorialMap.containsKey(start)) {
@@ -219,13 +219,13 @@ public class BlockEmbedding {
 		
 		// internal vertices of path
 		Vertex previous = start;
-		for (int vIndex = 1; vIndex < path.vsize() - 1; vIndex++) {
+		for (int vIndex = 1; vIndex < path.getVertexCount() - 1; vIndex++) {
 			Vertex vertex = path.getVertex(vIndex); 
 			if (!combinatorialMap.containsKey(vertex)) {
 				combinatorialMap.put(vertex, new ArrayList<Vertex>());
 			}
 			combinatorialMap.get(vertex).add(previous);
-			if (vIndex < path.vsize() - 1) {
+			if (vIndex < path.getVertexCount() - 1) {
 				Vertex next = path.getVertex(vIndex + 1);
 				combinatorialMap.get(vertex).add(next);
 			}

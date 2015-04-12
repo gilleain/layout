@@ -53,7 +53,7 @@ public class DrawingTest extends AbstractDrawingTest {
 		if (em != null) {
 			draw(em, "six_prism.png");
 		}
-		System.out.println(block.esize());
+		System.out.println(block.getEdgeCount());
 	}
 	
 	@Test

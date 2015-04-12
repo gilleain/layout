@@ -142,7 +142,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
                 avgY += p.getY();
             }
         }
-        return new Point2D.Double(avgX / face.vsize(), avgY / face.vsize());
+        return new Point2D.Double(avgX / face.getVertexCount(), avgY / face.getVertexCount());
     }
     
 //    private String f(Point2D p) {
@@ -171,7 +171,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
 
         // the arch edge should be the next one in the face
         int nextIndex = startIndex + 1;
-        if (nextIndex >= face.esize()) {
+        if (nextIndex >= face.getEdgeCount()) {
             nextIndex = 0; 
         }
         Edge archEdge = edges.get(nextIndex);
@@ -227,7 +227,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
         Point2D archStartP = rep.getPoint(archStart);
         Point2D archEndP = rep.getPoint(archEnd);
         List<Edge> newOuterPath = new ArrayList<Edge>();
-        if (arch.vsize() == 2) {
+        if (arch.getVertexCount() == 2) {
             Edge edge = face.getEdge(archStart, archEnd);
             rep.addLine(edge, new Line2D.Double(archStartP, archEndP));
             newOuterPath.add(edge);
@@ -238,7 +238,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
             boolean isLeft = super.isLeft(totalCenter, archStartP, archEndP);
 //            System.out.println("ISLEFT " + isLeft + " ARCH " + arch);
             
-            double addAngle = Math.toRadians(180 / (arch.vsize() - 1));
+            double addAngle = Math.toRadians(180 / (arch.getVertexCount() - 1));
             Point2D prevPoint = archStartP;
             
             List<Edge> archEdges = arch.getEdges();
@@ -247,7 +247,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
             int vertexIndex = 1;
 //            System.out.println("Arch from " + d(currentAngle) + 
 //                               " deg by " + d(addAngle) + " deg , Forwards = " + forwards);
-            for (int counter = 1; counter < arch.vsize() - 1; counter++) {
+            for (int counter = 1; counter < arch.getVertexCount() - 1; counter++) {
                 Vertex vertex = arch.getVertex(vertexIndex);
                 if (isLeft) {
                     currentAngle += addAngle;
@@ -268,7 +268,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
                 vertexIndex++;
                 prevPoint = nextP;
 
-                if (archEdgeIndex < arch.esize()) {
+                if (archEdgeIndex < arch.getEdgeCount()) {
                     Edge edge = archEdges.get(archEdgeIndex);
                     rep.addLine(edge, line);
                     newOuterPath.add(edge);
@@ -294,7 +294,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
         if (core.size() == 1) { // simple cyclic core
             System.out.println("CORE is singular");
             Face face = faces.get(core.get(0));
-            circularLayout(face, face.vsize(), center.getX(), center.getY(), r, null, null, rep);
+            circularLayout(face, face.getVertexCount(), center.getX(), center.getY(), r, null, null, rep);
             for (Edge e : face.getEdges()) {
                 Line2D line = new Line2D.Double(rep.getPoint(e.getA()), rep.getPoint(e.getB()));
                 rep.addLine(e, line);
@@ -323,7 +323,7 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
         double cx = center.getX();
         double cy = center.getY();
         double pAx = cx - r;
-        circularLayout(faceA, faceA.vsize(), pAx, cy, r, null, null, rep);
+        circularLayout(faceA, faceA.getVertexCount(), pAx, cy, r, null, null, rep);
         
         // add the edges of face A to the outer path
         int sharedEdgeIndexA = edgesA.indexOf(sharedEdge);
@@ -363,9 +363,9 @@ public class ConcentricFaceLayout extends BaseCircularLayout implements Layout {
         
         boolean isLeft = super.isLeft(pB, pA, centerB);
         
-        double addAngle = Math.toRadians(360.0 / faceB.vsize());
+        double addAngle = Math.toRadians(360.0 / faceB.getVertexCount());
         double currentAngle = angle;
-        for (int counter = 0; counter < faceB.vsize() - 2; counter++) {
+        for (int counter = 0; counter < faceB.getVertexCount() - 2; counter++) {
             currentEdge = edgesB.get(currentIndex);
             outerPath.add(currentEdge);
             Vertex currentVertex = currentEdge.other(prev);

@@ -47,12 +47,12 @@ public class CycleFinderTest {
         CycleFinder.expand(basis, all, b);
         int fullCounter = 0;
 		for (Block cycle : all) {
-		    System.out.println(fullCounter + "\t" + cycle.esize() + "\t" + cycle);
+		    System.out.println(fullCounter + "\t" + cycle.getEdgeCount() + "\t" + cycle);
             fullCounter++;
 		}
 		
 		// this assertion fails for disconnected graphs - does the CC number count in the formula?
-		Assert.assertEquals((b.esize() - b.vsize() + 1), basisCounter);
+		Assert.assertEquals((b.getEdgeCount() - b.getVertexCount() + 1), basisCounter);
 		
 		Assert.assertEquals((int)Math.pow(2, basisCounter), fullCounter);
 	}
@@ -76,7 +76,7 @@ public class CycleFinderTest {
             if (!viable(subSet)) continue;
             BitSet bS = CycleFinder.combine(subSet);
             Block cycle = CycleFinder.toCycle(bS, b);
-            System.out.println(fullCounter + "\t" + cycle.esize() + "\t" + cycle + "\t" + subSet);
+            System.out.println(fullCounter + "\t" + cycle.getEdgeCount() + "\t" + cycle + "\t" + subSet);
             fullCounter++;
         }
 	}

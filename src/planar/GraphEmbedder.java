@@ -32,7 +32,7 @@ public class GraphEmbedder {
         List<Block> cycleBlocks = new ArrayList<Block>();
         
         for (Block block : blocks) {
-            if (block.esize() == 1) {
+            if (block.getEdgeCount() == 1) {
                 treeEdges.add(block.getEdges().get(0));
             } else {
                 cycleBlocks.add(block);

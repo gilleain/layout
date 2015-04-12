@@ -96,7 +96,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         IntGraph graph = lattice.getGraph();
         
         Representation rep = new Representation();
-        for (int vertexIndex = 0; vertexIndex < cycle.vsize(); vertexIndex++) {
+        for (int vertexIndex = 0; vertexIndex < cycle.getVertexCount(); vertexIndex++) {
             Vertex v = cycle.getVertex(vertexIndex);
             rep.addPoint(v, points.get(v.getIndex()));
         }
@@ -117,7 +117,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         IntGraph graph = lattice.getGraph();
         
         Representation rep = new Representation();
-        for (int vertexIndex = 0; vertexIndex < cycle.vsize(); vertexIndex++) {
+        for (int vertexIndex = 0; vertexIndex < cycle.getVertexCount(); vertexIndex++) {
             Vertex v = cycle.getVertex(vertexIndex);
             rep.addPoint(v, points.get(v.getIndex()));
             for (int partnerIndex : graph.getConnected(vertexIndex)) {
@@ -158,11 +158,11 @@ public class HexLatticeCyclesTest extends LatticeTest {
         IntGraph graph = lattice.getGraph();
         Map<Integer, List<Block>> hist = new HashMap<Integer, List<Block>>();
         for (Block cycle : CycleFinder.findAll(new Block(graph))) {
-            if (cycle.vsize() == 0) continue;
+            if (cycle.getVertexCount() == 0) continue;
             ConnectedComponentFinder finder = new ConnectedComponentFinder();
             cycle.accept(finder);
             if (finder.getComponents().size() == 1) {
-                int size = cycle.esize();
+                int size = cycle.getEdgeCount();
                 List<Block> cycles;
                 if (hist.containsKey(size)) {
                     cycles = hist.get(size);
@@ -181,7 +181,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         IntGraph graph = lattice.getGraph();
         
         Block rep = new Block(cycle);
-        if (cycle.vsize() != cycle.esize()) {
+        if (cycle.getVertexCount() != cycle.getEdgeCount()) {
             System.out.println("cycle " + cycle);
         }
         
@@ -198,7 +198,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         System.out.println(innerPoints);
         
         // add the edges spanning the cycle
-        for (int vertexIndex = 0; vertexIndex < cycle.vsize(); vertexIndex++) {
+        for (int vertexIndex = 0; vertexIndex < cycle.getVertexCount(); vertexIndex++) {
             Vertex v = cycle.getVertex(vertexIndex);
             rep.add(v);
             for (int partnerIndex : graph.getConnected(v.getIndex())) {
@@ -251,8 +251,8 @@ public class HexLatticeCyclesTest extends LatticeTest {
             
             if (embedding != null) {
 //                System.out.println(
-//                        "V = " + rep.vsize()
-//                        + " E = " + rep.esize()
+//                        "V = " + rep.getVertexCount()
+//                        + " E = " + rep.getEdgeCount()
 //                        + " F = " + embedding.getFaces().size() 
 //                        + " " + rep);
                 IntGraph dual = DualFinder.getDual(embedding);
@@ -396,7 +396,7 @@ public class HexLatticeCyclesTest extends LatticeTest {
         for (CycleBitSetPair pair : cycleSets) {
             Block cycle = pair.cycle;
             List<BitSet> bitSets = pair.bitSets;
-            if (cycle.vsize() == 12) {
+            if (cycle.getVertexCount() == 12) {
                 ConnectedComponentFinder finder = new ConnectedComponentFinder();
                 cycle.accept(finder);
                 List<Block> components = finder.getComponents();
